@@ -29,6 +29,8 @@ public class RootPrototypeController implements Initializable
     private JFXButton btnCorrectAttendance;
     @FXML
     private ImageView imgView;
+    @FXML
+    private ImageView imgLogo;
 
     /**
      * Initializes the controller class.
@@ -36,7 +38,9 @@ public class RootPrototypeController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-        // TODO
+        
+//        Image image = new Image("file:logo.png");
+//        imgLogo.setImage(image);
     }
 
     @FXML
