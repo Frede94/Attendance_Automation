@@ -33,7 +33,7 @@ public class AttendanceAutomation extends Application
 
         initRootLayout();
 
-        //showPersonOverview();
+        showChartOverview();
     }
 
     public void initRootLayout()
@@ -55,17 +55,17 @@ public class AttendanceAutomation extends Application
         }
     }
 
-    public void showPersonOverview()
+    public void showChartOverview()
     {
         try
         {
             // Load person overview.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(AttendanceAutomation.class.getResource("gui/ChartView.fxml"));
-            AnchorPane personOverview = (AnchorPane) loader.load();
+            BorderPane chartOverview = (BorderPane) loader.load();
 
             // Set person overview into the center of root layout.
-            rootLayout.setCenter(personOverview);
+            rootLayout.setCenter(chartOverview);
 
             // Give the controller access to the main app.
             ChartViewController controller = loader.getController();

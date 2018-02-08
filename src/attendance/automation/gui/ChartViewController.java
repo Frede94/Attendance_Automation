@@ -21,6 +21,7 @@ public class ChartViewController implements Initializable
 
     public ChartViewController()
     {
+        
     }
 
     /**
