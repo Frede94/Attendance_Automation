@@ -60,6 +60,9 @@ public class RootPrototypeController implements Initializable
     @FXML
     private void attendanceAction(ActionEvent event)
     {
+
+
+
         try
         {
             // Load person overview.
@@ -78,20 +81,28 @@ public class RootPrototypeController implements Initializable
         {
             e.printStackTrace();
         }
-    }
+   }
 
     @FXML
     private void overviewAction(ActionEvent event)
     {
+
+      
 //        Image image = new Image("file:/C:/Users/Frederik%20Bærbar/Desktop/SCO/Attendance_Automation/src/attendance/automation/gui/Images/2018-2019-calendar.PNG");
 //        imgView.setImage(image);
+
     }
 
     @FXML
     private void correctAction(ActionEvent event)
     {
+
 //        Image image = new Image("file:/C:/Users/Frederik%20Bærbar/Desktop/SCO/Attendance_Automation/src/attendance/automation/gui/Images/blank.PNG");
 //        imgView.setImage(image);
+
     }
 
+   
 }
+    
+
