@@ -15,7 +15,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 /**
  * FXML Controller class
@@ -100,6 +102,37 @@ public class RootPrototypeController implements Initializable
 //        Image image = new Image("file:/C:/Users/Frederik%20Bærbar/Desktop/SCO/Attendance_Automation/src/attendance/automation/gui/Images/blank.PNG");
 //        imgView.setImage(image);
 
+    }
+
+    @FXML
+    private void studentAction(ActionEvent event)
+    {
+          try
+        {
+            // Load person overview.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(AttendanceAutomation.class.getResource("gui/AttendeesView.fxml"));
+            AnchorPane chartOverview = (AnchorPane) loader.load();
+
+            // Set person overview into the center of root layout.
+            borderRoot.setCenter(chartOverview);
+            
+
+            // Give the controller access to the main app.
+            ChartViewController controller = loader.getController();
+//            controller.setMainApp(mainApp);
+
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+   }
+    
+
+    @FXML
+    private void teacherAction(ActionEvent event)
+    {
+        
     }
 
    

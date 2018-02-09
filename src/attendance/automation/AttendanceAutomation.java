@@ -34,7 +34,7 @@ public class AttendanceAutomation extends Application
 //        showChartOverview();
     }
 
-    public void initRootLayout()
+    public void initRootLayout()    
     {
         try
         {

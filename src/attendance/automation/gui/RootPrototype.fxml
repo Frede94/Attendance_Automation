@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="borderRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="761.0" prefWidth="1080.0" style="-fx-background-color: lightgrey;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="attendance.automation.gui.RootPrototypeController">
+<BorderPane fx:id="borderRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="761.0" prefWidth="1080.0" style="-fx-background-color: lightgrey;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="attendance.automation.gui.RootPrototypeController">
    <top>
       <AnchorPane prefHeight="76.0" prefWidth="872.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
          <children>
@@ -74,11 +74,11 @@
                               <RowConstraints maxHeight="80.0" minHeight="0.0" prefHeight="37.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <JFXButton prefHeight="140.0" prefWidth="211.0" ripplerFill="#2800ff" style="-fx-background-color: lightgrey; -fx-border-color: grey;" text="Students">
+                              <JFXButton onAction="#studentAction" prefHeight="140.0" prefWidth="211.0" ripplerFill="#2800ff" style="-fx-background-color: lightgrey; -fx-border-color: grey;" text="Students">
                                  <font>
                                     <Font size="20.0" />
                                  </font></JFXButton>
-                              <JFXButton prefHeight="140.0" prefWidth="211.0" ripplerFill="#2800ff" style="-fx-background-color: lightgrey; -fx-border-color: grey;" text="Teachers" GridPane.rowIndex="1">
+                              <JFXButton onAction="#teacherAction" prefHeight="140.0" prefWidth="211.0" ripplerFill="#2800ff" style="-fx-background-color: lightgrey; -fx-border-color: grey;" text="Teachers" GridPane.rowIndex="1">
                                  <font>
                                     <Font size="20.0" />
                                  </font></JFXButton>
