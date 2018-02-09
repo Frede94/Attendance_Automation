@@ -31,7 +31,7 @@
    <top>
       <AnchorPane prefHeight="87.0" prefWidth="800.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="199.0" layoutY="23.0" text="Your Attendance Overview" textAlignment="CENTER" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="205.0" AnchorPane.rightAnchor="180.0" AnchorPane.topAnchor="26.0">
+            <Label layoutX="205.0" layoutY="26.0" text="Class Attendance Overview " textAlignment="CENTER" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="205.0" AnchorPane.rightAnchor="180.0" AnchorPane.topAnchor="26.0">
                <font>
                   <Font name="System Bold" size="32.0" />
                </font>
