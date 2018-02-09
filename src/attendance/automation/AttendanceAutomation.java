@@ -33,7 +33,7 @@ public class AttendanceAutomation extends Application
 
         initRootLayout();
 
-        showChartOverview();
+//        showChartOverview();
     }
 
     public void initRootLayout()
@@ -45,6 +45,8 @@ public class AttendanceAutomation extends Application
             loader.setLocation(AttendanceAutomation.class.getResource("gui/LoginWindow.fxml"));///address/   //RootPrototype
             rootLayout = (AnchorPane) loader.load();  //BorderPane
 
+            
+         
             // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
@@ -55,27 +57,31 @@ public class AttendanceAutomation extends Application
         }
     }
 
-    public void showChartOverview()
-    {
-        try
-        {
-            // Load person overview.
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(AttendanceAutomation.class.getResource("gui/ChartView.fxml"));
-            BorderPane chartOverview = (BorderPane) loader.load();
 
-            // Set person overview into the center of root layout.
-            //rootLayout.setCenter(chartOverview);
+   
 
-            // Give the controller access to the main app.
-            ChartViewController controller = loader.getController();
-            controller.setMainApp(this);
+//    public void showChartOverview()
+//    {
+//        try
+//        {
+//            // Load person overview.
+//            FXMLLoader loader = new FXMLLoader();
+//            loader.setLocation(AttendanceAutomation.class.getResource("gui/ChartView.fxml"));
+//            BorderPane chartOverview = (BorderPane) loader.load();
+//
+//            // Set person overview into the center of root layout.
+//            rootLayout.setCenter(chartOverview);
+//
+//            // Give the controller access to the main app.
+//            ChartViewController controller = loader.getController();
+//            controller.setMainApp(this);
+//
+//        } catch (IOException e)
+//        {
+//            e.printStackTrace();
+//        }
+//    }
 
-        } catch (IOException e)
-        {
-            e.printStackTrace();
-        }
-    }
 
     public Stage getPrimaryStage()
     {
