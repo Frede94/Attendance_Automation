@@ -33,7 +33,8 @@ dist/
 nbdist/
 .nb-gradle/
 
-!Attendance_Automation\libraries
+Attendance_Automation/*
+!Attendance_Automation/libraries/
 
 # End of https://www.gitignore.io/api/java,netbeans
 /MyTunes/nbproject/private/
