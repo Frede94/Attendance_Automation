@@ -78,6 +78,8 @@ public class LoginWindowController implements Initializable
     @FXML
     private void pressCancelBtn(ActionEvent event)
     {
+        Stage stage = (Stage) cancelBtn.getScene().getWindow();
+        stage.close();
     }
     
 }
