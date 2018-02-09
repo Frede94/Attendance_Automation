@@ -5,14 +5,18 @@
  */
 package attendance.automation.gui;
 
+import attendance.automation.AttendanceAutomation;
 import com.jfoenix.controls.JFXButton;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.image.ImageView;
-import javafx.scene.image.Image;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 /**
  * FXML Controller class
  *
@@ -32,6 +36,11 @@ public class RootPrototypeController implements Initializable
     @FXML
     private ImageView imgLogo;
 
+    private Stage primaryStage;
+    
+    private BorderPane rootLayout;
+    
+    private AttendanceAutomation mainApp;
     /**
      * Initializes the controller class.
      */
@@ -43,25 +52,48 @@ public class RootPrototypeController implements Initializable
 //        imgLogo.setImage(image);
     }
 
+    public RootPrototypeController()
+    {
+        
+    }
+    
+    
+
     @FXML
     private void attendanceAction(ActionEvent event)
     {
-        Image image = new Image("file:/C:/Users/Frederik%20Bærbar/Desktop/SCO/Attendance_Automation/src/attendance/automation/gui/Images/ChartView.PNG");
-        imgView.setImage(image);
+        try
+        {
+            // Load person overview.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(AttendanceAutomation.class.getResource("gui/ChartView.fxml"));
+            BorderPane chartOverview = (BorderPane) loader.load();
+
+            // Set person overview into the center of root layout.
+            rootLayout.setCenter(chartOverview);
+
+            // Give the controller access to the main app.
+            ChartViewController controller = loader.getController();
+            controller.setMainApp(mainApp);
+
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     private void overviewAction(ActionEvent event)
     {
-        Image image = new Image("file:/C:/Users/Frederik%20Bærbar/Desktop/SCO/Attendance_Automation/src/attendance/automation/gui/Images/2018-2019-calendar.PNG");
-        imgView.setImage(image);
+//        Image image = new Image("file:/C:/Users/Frederik%20Bærbar/Desktop/SCO/Attendance_Automation/src/attendance/automation/gui/Images/2018-2019-calendar.PNG");
+//        imgView.setImage(image);
     }
 
     @FXML
     private void correctAction(ActionEvent event)
     {
-        Image image = new Image("file:/C:/Users/Frederik%20Bærbar/Desktop/SCO/Attendance_Automation/src/attendance/automation/gui/Images/blank.PNG");
-        imgView.setImage(image);
+//        Image image = new Image("file:/C:/Users/Frederik%20Bærbar/Desktop/SCO/Attendance_Automation/src/attendance/automation/gui/Images/blank.PNG");
+//        imgView.setImage(image);
     }
 
 }
