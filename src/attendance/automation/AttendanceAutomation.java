@@ -23,7 +23,7 @@ public class AttendanceAutomation extends Application
 {
 
     private Stage primaryStage;
-    private BorderPane rootLayout;
+    private AnchorPane rootLayout; //BorderPane
 
     @Override
     public void start(Stage primaryStage)
@@ -42,8 +42,8 @@ public class AttendanceAutomation extends Application
         {
             // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(AttendanceAutomation.class.getResource("gui/RootPrototype.fxml"));///address/
-            rootLayout = (BorderPane) loader.load();
+            loader.setLocation(AttendanceAutomation.class.getResource("gui/LoginWindow.fxml"));///address/   //RootPrototype
+            rootLayout = (AnchorPane) loader.load();  //BorderPane
 
             // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout);
@@ -65,7 +65,7 @@ public class AttendanceAutomation extends Application
             BorderPane chartOverview = (BorderPane) loader.load();
 
             // Set person overview into the center of root layout.
-            rootLayout.setCenter(chartOverview);
+            //rootLayout.setCenter(chartOverview);
 
             // Give the controller access to the main app.
             ChartViewController controller = loader.getController();
