@@ -19,6 +19,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+
 /**
  * FXML Controller class
  *
@@ -37,34 +38,30 @@ public class RootPrototypeController implements Initializable
     private ImageView imgLogo;
 
     private Stage primaryStage;
-    
+
 //    private AttendanceAutomation mainApp;
     @FXML
     private BorderPane borderRoot;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-        
+
 //        Image image = new Image("file:logo.png");
 //        imgLogo.setImage(image);
     }
 
     public RootPrototypeController()
     {
-        
+
     }
-    
-    
 
     @FXML
     private void attendanceAction(ActionEvent event)
     {
-
-
-
         try
         {
             // Load person overview.
@@ -83,16 +80,29 @@ public class RootPrototypeController implements Initializable
         {
             e.printStackTrace();
         }
-   }
+    }
 
     @FXML
     private void overviewAction(ActionEvent event)
     {
+        try
+        {
+            // Load person overview.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(AttendanceAutomation.class.getResource("gui/AttendanceOverview.fxml"));
+            BorderPane chartOverview = (BorderPane) loader.load();
 
-      
-//        Image image = new Image("file:/C:/Users/Frederik%20Bærbar/Desktop/SCO/Attendance_Automation/src/attendance/automation/gui/Images/2018-2019-calendar.PNG");
-//        imgView.setImage(image);
+            // Set person overview into the center of root layout.
+            borderRoot.setCenter(chartOverview);
 
+            // Give the controller access to the main app.
+            ChartViewController controller = loader.getController();
+//            controller.setMainApp(mainApp);
+
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -101,8 +111,8 @@ public class RootPrototypeController implements Initializable
 
 //        Image image = new Image("file:/C:/Users/Frederik%20Bærbar/Desktop/SCO/Attendance_Automation/src/attendance/automation/gui/Images/blank.PNG");
 //        imgView.setImage(image);
-
     }
+
 
     @FXML
     private void studentAction(ActionEvent event)
@@ -136,6 +146,5 @@ public class RootPrototypeController implements Initializable
     }
 
    
-}
-    
 
+}
