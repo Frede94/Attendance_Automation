@@ -33,12 +33,12 @@ public class ChartViewController implements Initializable
         // TODO
     }
 
-    public void setMainApp(AttendanceAutomation mainApp)
-    {
-        this.mainApp = mainApp;
-
-        // Add observable list data to the table
-        //personTable.setItems(mainApp.getPersonData());
-    }
+//    public void setMainApp(AttendanceAutomation mainApp)
+//    {
+//        this.mainApp = mainApp;
+//
+//        // Add observable list data to the table
+//        //personTable.setItems(mainApp.getPersonData());
+//    }
 
 }

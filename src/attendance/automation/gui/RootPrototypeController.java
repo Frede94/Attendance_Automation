@@ -32,15 +32,13 @@ public class RootPrototypeController implements Initializable
     @FXML
     private JFXButton btnCorrectAttendance;
     @FXML
-    private ImageView imgView;
-    @FXML
     private ImageView imgLogo;
 
     private Stage primaryStage;
     
-    private BorderPane rootLayout;
-    
-    private AttendanceAutomation mainApp;
+//    private AttendanceAutomation mainApp;
+    @FXML
+    private BorderPane borderRoot;
     /**
      * Initializes the controller class.
      */
@@ -70,11 +68,11 @@ public class RootPrototypeController implements Initializable
             BorderPane chartOverview = (BorderPane) loader.load();
 
             // Set person overview into the center of root layout.
-            rootLayout.setCenter(chartOverview);
+            borderRoot.setCenter(chartOverview);
 
             // Give the controller access to the main app.
             ChartViewController controller = loader.getController();
-            controller.setMainApp(mainApp);
+//            controller.setMainApp(mainApp);
 
         } catch (IOException e)
         {

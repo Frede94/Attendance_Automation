@@ -45,6 +45,8 @@ public class AttendanceAutomation extends Application
             loader.setLocation(AttendanceAutomation.class.getResource("gui/RootPrototype.fxml"));///address/
             rootLayout = (BorderPane) loader.load();
 
+            
+         
             // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
