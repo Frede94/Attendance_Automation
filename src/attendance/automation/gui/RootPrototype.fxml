@@ -82,7 +82,6 @@
                                  <font>
                                     <Font size="20.0" />
                                  </font></JFXButton>
-                              <JFXButton prefHeight="140.0" prefWidth="211.0" ripplerFill="#2800ff" style="-fx-background-color: lightgrey; -fx-border-color: grey;" text="Button" GridPane.rowIndex="2" />
                            </children>
                         </GridPane>
                      </content>
