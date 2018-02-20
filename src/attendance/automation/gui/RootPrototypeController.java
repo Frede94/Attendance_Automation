@@ -129,7 +129,7 @@ public class RootPrototypeController implements Initializable
             
 
             // Give the controller access to the main app.
-            ChartViewController controller = loader.getController();
+//            ChartViewController controller = loader.getController();
 //            controller.setMainApp(mainApp);
 
         } catch (IOException e)
