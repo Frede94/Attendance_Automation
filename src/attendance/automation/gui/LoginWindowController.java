@@ -67,10 +67,13 @@ public class LoginWindowController implements Initializable
             stage.setTitle("Attendance Window");
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
+            
         } catch (Exception e)
         {
             e.printStackTrace();
         }
+        Stage stageClose = (Stage) loginBtn.getScene().getWindow();
+        stageClose.close();
       
         
     }

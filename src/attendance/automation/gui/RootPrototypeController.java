@@ -109,15 +109,30 @@ public class RootPrototypeController implements Initializable
     private void correctAction(ActionEvent event)
     {
 
-//        Image image = new Image("file:/C:/Users/Frederik%20Bærbar/Desktop/SCO/Attendance_Automation/src/attendance/automation/gui/Images/blank.PNG");
-//        imgView.setImage(image);
-    }
+        try
+        {
+            // Load person overview.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(AttendanceAutomation.class.getResource("gui/CorrectWindow.fxml"));
+            BorderPane chartOverview = (BorderPane) loader.load();
 
+            // Set person overview into the center of root layout.
+            borderRoot.setCenter(chartOverview);
+
+            // Give the controller access to the main app.
+            ChartViewController controller = loader.getController();
+//            controller.setMainApp(mainApp);
+
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     private void studentAction(ActionEvent event)
     {
-          try
+        try
         {
             // Load person overview.
             FXMLLoader loader = new FXMLLoader();
@@ -126,25 +141,20 @@ public class RootPrototypeController implements Initializable
 
             // Set person overview into the center of root layout.
             borderRoot.setCenter(chartOverview);
-            
 
             // Give the controller access to the main app.
 //            ChartViewController controller = loader.getController();
 //            controller.setMainApp(mainApp);
-
         } catch (IOException e)
         {
             e.printStackTrace();
         }
-   }
-    
+    }
 
     @FXML
     private void teacherAction(ActionEvent event)
     {
-        
-    }
 
-   
+    }
 
 }
