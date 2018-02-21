@@ -124,13 +124,13 @@ public class RootPrototypeController implements Initializable
         dialog.setTitle("Teacher Login");
         dialog.setHeaderText(" ");
 
-// Set the icon (must be included in the project).
+        // Set the icon (must be included in the project).
         dialog.setGraphic(new ImageView(this.getClass().getResource("Images/logo2.PNG").toString()));
-// Set the button types.
+        // Set the button types.
         ButtonType loginButtonType = new ButtonType("Login", ButtonData.OK_DONE);
         dialog.getDialogPane().getButtonTypes().addAll(loginButtonType, ButtonType.CANCEL);
 
-// Create the username and password labels and fields.
+        // Create the username and password labels and fields.
         GridPane grid = new GridPane();
         grid.setHgap(10);
         grid.setVgap(10);
@@ -146,11 +146,11 @@ public class RootPrototypeController implements Initializable
         grid.add(new Label("Password:"), 0, 1);
         grid.add(password, 1, 1);
 
-// Enable/Disable login button depending on whether a username was entered.
+        // Enable/Disable login button depending on whether a username was entered.
         Node loginButton = dialog.getDialogPane().lookupButton(loginButtonType);
         loginButton.setDisable(true);
 
-// Do some validation (using the Java 8 lambda syntax).
+        // Do some validation (using the Java 8 lambda syntax).
         username.textProperty().addListener((observable, oldValue, newValue) ->
         {
             loginButton.setDisable(newValue.trim().isEmpty());
@@ -158,10 +158,10 @@ public class RootPrototypeController implements Initializable
 
         dialog.getDialogPane().setContent(grid);
 
-// Request focus on the username field by default.
+        // Request focus on the username field by default.
         Platform.runLater(() -> username.requestFocus());
 
-// Convert the result to a username-password-pair when the login button is clicked.
+        // Convert the result to a username-password-pair when the login button is clicked.
         dialog.setResultConverter(dialogButton ->
         {
             if (dialogButton == loginButtonType)
