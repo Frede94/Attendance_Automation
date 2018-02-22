@@ -53,6 +53,8 @@ public class RootPrototypeController implements Initializable
 //    private AttendanceAutomation mainApp;
     @FXML
     private BorderPane borderRoot;
+    @FXML
+    private JFXButton btnSubmit;
 
     /**
      * Initializes the controller class.
@@ -224,6 +226,11 @@ public class RootPrototypeController implements Initializable
     private void teacherAction(ActionEvent event)
     {
 
+    }
+
+    @FXML
+    private void submitAction(ActionEvent event)
+    {
     }
 
 }

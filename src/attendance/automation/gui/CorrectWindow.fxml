@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXCheckBox?>
 <?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXRadioButton?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: lightgrey;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: lightgrey;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="attendance.automation.gui.CorrectWindowController">
    <top>
       <Label text="Correct Attendance" BorderPane.alignment="CENTER">
          <font>
@@ -55,16 +56,19 @@
          <center>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <JFXCheckBox fx:id="chkAbsence" layoutX="14.0" layoutY="14.0" text="Absence">
+                  <JFXRadioButton layoutX="13.0" layoutY="14.0" style="-jfx-selected-color: red;" text="Absence">
                      <font>
                         <Font size="20.0" />
                      </font>
-                  </JFXCheckBox>
-                  <JFXCheckBox fx:id="chkPresent" layoutX="14.0" layoutY="44.0" text="Present">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="correctGroup" />
+                     </toggleGroup>
+                  </JFXRadioButton>
+                  <JFXRadioButton layoutX="13.0" layoutY="61.0" text="Present" toggleGroup="$correctGroup">
                      <font>
                         <Font size="20.0" />
                      </font>
-                  </JFXCheckBox>
+                  </JFXRadioButton>
                </children>
             </AnchorPane>
          </center>
