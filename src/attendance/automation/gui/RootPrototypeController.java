@@ -55,6 +55,10 @@ public class RootPrototypeController implements Initializable
     private BorderPane borderRoot;
     @FXML
     private JFXButton btnSubmit;
+    @FXML
+    private JFXButton btnStudentsList;
+    @FXML
+    private JFXButton btnTeachersList;
 
     /**
      * Initializes the controller class.
@@ -231,6 +235,24 @@ public class RootPrototypeController implements Initializable
     @FXML
     private void submitAction(ActionEvent event)
     {
+        try
+        {
+            // Load person overview.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(AttendanceAutomation.class.getResource("gui/Submit.fxml"));
+            BorderPane chartOverview = (BorderPane) loader.load();
+
+            // Set person overview into the center of root layout.
+            borderRoot.setCenter(chartOverview);
+
+            // Give the controller access to the main app.
+            ChartViewController controller = loader.getController();
+//          controller.setMainApp(mainApp);
+
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
     }
 
 }

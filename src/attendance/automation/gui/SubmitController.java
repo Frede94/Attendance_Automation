@@ -13,7 +13,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleGroup;
 
 /**
@@ -21,23 +20,21 @@ import javafx.scene.control.ToggleGroup;
  *
  * @author Frederik
  */
-public class CorrectWindowController implements Initializable
+public class SubmitController implements Initializable
 {
 
     @FXML
-    private JFXDatePicker dateTeach;
+    private JFXDatePicker dateStud;
     @FXML
-    private JFXTextArea commentTeach;
+    private JFXTextArea commentStud;
     @FXML
-    private TableView<?> tableCorrectAttendance;
+    private JFXButton btnStudSave;
     @FXML
-    private JFXButton btnTeachSave;
+    private JFXRadioButton radioStudAbsent;
     @FXML
-    private JFXRadioButton radioTeachAbsent;
+    private ToggleGroup submitGroup;
     @FXML
-    private ToggleGroup correctGroup;
-    @FXML
-    private JFXRadioButton radioTeachPresent;
+    private JFXRadioButton radioStudPresent;
 
     /**
      * Initializes the controller class.

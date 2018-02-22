@@ -6,7 +6,6 @@
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
@@ -29,14 +28,10 @@
       </BarChart>
    </center>
    <top>
-      <AnchorPane prefHeight="87.0" prefWidth="800.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label layoutX="205.0" layoutY="26.0" text="Class Attendance Overview " textAlignment="CENTER" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="205.0" AnchorPane.rightAnchor="180.0" AnchorPane.topAnchor="26.0">
-               <font>
-                  <Font name="System Bold" size="32.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
+      <Label text="Class Attendance Overview " textAlignment="CENTER" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="System Bold" size="32.0" />
+         </font>
+      </Label>
    </top>
 </BorderPane>

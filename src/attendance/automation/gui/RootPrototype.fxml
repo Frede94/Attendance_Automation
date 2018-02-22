@@ -41,7 +41,7 @@
                             <RowConstraints maxHeight="80.0" minHeight="0.0" prefHeight="37.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <JFXButton fx:id="btnAttendance" onAction="#attendanceAction" prefHeight="140.0" prefWidth="211.0" ripplerFill="#2800ff" style="-fx-background-color: lightgrey; -fx-border-color: grey;" text="Your Attendance">
+                              <JFXButton fx:id="btnAttendance" onAction="#attendanceAction" prefHeight="140.0" prefWidth="211.0" ripplerFill="#2800ff" style="-fx-background-color: lightgrey; -fx-border-color: grey;" text="Your Attendance" textAlignment="CENTER">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
@@ -56,7 +56,7 @@
                                     <Font size="20.0" />
                                  </font>
                               </JFXButton>
-                              <JFXButton fx:id="btnSubmit" layoutX="23.0" layoutY="183.0" onAction="#submitAction" prefHeight="140.0" prefWidth="236.0" ripplerFill="#2800ff" style="-fx-background-color: lightgrey; -fx-border-color: grey;" text="Submit Attendance" GridPane.rowIndex="1">
+                              <JFXButton fx:id="btnSubmit" layoutX="23.0" layoutY="183.0" onAction="#submitAction" prefHeight="140.0" prefWidth="236.0" ripplerFill="#2800ff" style="-fx-background-color: lightgrey; -fx-border-color: grey;" text="Submit Attendance Manually" textAlignment="CENTER" wrapText="true" GridPane.rowIndex="1">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
@@ -80,11 +80,11 @@
                               <RowConstraints maxHeight="80.0" minHeight="0.0" prefHeight="37.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <JFXButton onAction="#studentAction" prefHeight="140.0" prefWidth="211.0" ripplerFill="#2800ff" style="-fx-background-color: lightgrey; -fx-border-color: grey;" text="Students">
+                              <JFXButton fx:id="btnStudentsList" onAction="#studentAction" prefHeight="140.0" prefWidth="211.0" ripplerFill="#2800ff" style="-fx-background-color: lightgrey; -fx-border-color: grey;" text="Students">
                                  <font>
                                     <Font size="20.0" />
                                  </font></JFXButton>
-                              <JFXButton onAction="#teacherAction" prefHeight="140.0" prefWidth="211.0" ripplerFill="#2800ff" style="-fx-background-color: lightgrey; -fx-border-color: grey;" text="Teachers" GridPane.rowIndex="1">
+                              <JFXButton fx:id="btnTeachersList" onAction="#teacherAction" prefHeight="140.0" prefWidth="211.0" ripplerFill="#2800ff" style="-fx-background-color: lightgrey; -fx-border-color: grey;" text="Teachers" GridPane.rowIndex="1">
                                  <font>
                                     <Font size="20.0" />
                                  </font></JFXButton>
