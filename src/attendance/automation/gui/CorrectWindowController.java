@@ -13,6 +13,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleGroup;
 
@@ -29,8 +30,6 @@ public class CorrectWindowController implements Initializable
     @FXML
     private JFXTextArea commentTeach;
     @FXML
-    private TableView<?> tableCorrectAttendance;
-    @FXML
     private JFXButton btnTeachSave;
     @FXML
     private JFXRadioButton radioTeachAbsent;
@@ -38,6 +37,18 @@ public class CorrectWindowController implements Initializable
     private ToggleGroup correctGroup;
     @FXML
     private JFXRadioButton radioTeachPresent;
+    @FXML
+    private TableView<?> tableCorrectOverview;
+    @FXML
+    private TableView<?> tableCorrectCourse;
+    @FXML
+    private TableColumn<?, ?> clmnAllAttendance;
+    @FXML
+    private TableColumn<?, ?> clmnAllName;
+    @FXML
+    private TableColumn<?, ?> clmnStudentCourse;
+    @FXML
+    private TableColumn<?, ?> clmnStudenAttendance;
 
     /**
      * Initializes the controller class.
