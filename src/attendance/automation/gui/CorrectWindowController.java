@@ -5,6 +5,7 @@
  */
 package attendance.automation.gui;
 
+import attendance.automation.be.Students;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXRadioButton;
@@ -17,6 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
  * FXML Controller class
@@ -39,30 +41,41 @@ public class CorrectWindowController implements Initializable
     @FXML
     private JFXRadioButton radioTeachPresent;
     @FXML
-    private TableView<?> tableCorrectOverview;
+    private TableView<Students> tableCorrectOverview;
     @FXML
-    private TableView<?> tableCorrectCourse;
+    private TableView<Students> tableCorrectCourse;
     @FXML
-    private TableColumn<?, ?> clmnAllAttendance;
+    private TableColumn<Students, String> clmnAllAttendance;
     @FXML
-    private TableColumn<?, ?> clmnAllName;
+    private TableColumn<Students, String> clmnAllName;
     @FXML
     private TableColumn<?, ?> clmnStudentCourse;
     @FXML
     private TableColumn<?, ?> clmnStudenAttendance;
 
+    private Model model = new Model();
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-        // TODO
+        clmnAllName.setCellValueFactory(new PropertyValueFactory<>("FirstName"));
+        clmnAllAttendance.setCellValueFactory(new PropertyValueFactory<>("Overall"));
+        
+        tableCorrectOverview.setItems(model.getStudents());
+        model.loadStudents();
     }    
 
     @FXML
     private void teachSaveAction(ActionEvent event)
     {
+        
+    }
+    
+    public void loadStudentsCorrect()
+    {
+        model.loadStudents();
     }
     
 }

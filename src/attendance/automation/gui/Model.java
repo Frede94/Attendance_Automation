@@ -20,6 +20,7 @@ public class Model
 {
     StudentsManager studentsManager = new StudentsManager();
     private static ObservableList<Students> tableAttendees = FXCollections.observableArrayList();    
+    private static ObservableList<Students> tableCorrectOverview = FXCollections.observableArrayList();    
     private static ObservableList<Teachers> tableTeachersTeachers = FXCollections.observableArrayList();    
     
     
@@ -33,6 +34,9 @@ public class Model
         
         this.tableTeachersTeachers = FXCollections.observableArrayList();
         tableTeachersTeachers.addAll(studentsManager.getAllTeachers());
+        
+        this.tableCorrectOverview = FXCollections.observableArrayList();
+        tableCorrectOverview.addAll(studentsManager.getAllStudents());
 
         loadStudents();
         
@@ -70,5 +74,10 @@ public class Model
     public ObservableList<Teachers> getTeachers()
     {
         return tableTeachersTeachers;
+    }
+
+    ObservableList<Students> getStudentsCorrect()
+    {
+        return tableCorrectOverview;
     }
 }
