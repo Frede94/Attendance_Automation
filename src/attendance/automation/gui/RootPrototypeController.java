@@ -18,7 +18,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Accordion;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
@@ -29,6 +33,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 
@@ -62,6 +67,8 @@ public class RootPrototypeController implements Initializable
     private JFXButton btnTeachersList;
     @FXML
     private Accordion accordionRoot;
+    @FXML
+    private JFXButton btnLogOut;
 
     /**
      * Initializes the controller class.
@@ -273,6 +280,41 @@ public class RootPrototypeController implements Initializable
         {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void LogOutAction(ActionEvent event)
+    {        
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Log out");
+        alert.setHeaderText("Log Out");
+        alert.setContentText("Are you sure you want to log out");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK)
+        {
+            try
+            {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginWindow.fxml"));
+                Parent root1 = (Parent) fxmlLoader.load();
+                LoginWindowController ewc = fxmlLoader.getController();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root1));
+                stage.setTitle("Login");
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.show();
+
+            } catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+            Stage stageClose = (Stage) btnLogOut.getScene().getWindow();
+            stageClose.close();
+        } else
+        {
+            // ... user chose CANCEL or closed the dialog
+        }
+
     }
 
 }

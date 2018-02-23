@@ -100,4 +100,22 @@
          </children>
       </AnchorPane>
    </left>
+   <bottom>
+      <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="45.0" prefWidth="1080.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="983.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <JFXButton fx:id="btnLogOut" buttonType="RAISED" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#LogOutAction" prefHeight="42.0" prefWidth="114.0" ripplerFill="#2800ff" style="-fx-background-color: lightgrey; -fx-border-color: grey;" text="Log out" GridPane.columnIndex="1">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </GridPane>
+   </bottom>
 </BorderPane>
