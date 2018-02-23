@@ -94,5 +94,6 @@ public class AttendanceAutomation extends Application
     {
         launch(args);
     }
+    
 
 }
