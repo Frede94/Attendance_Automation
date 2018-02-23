@@ -93,7 +93,7 @@ public class RootPrototypeController implements Initializable
             borderRoot.setCenter(chartOverview);
 
             // Give the controller access to the main app.
-            StudentViewController controller = loader.getController();
+            AttendanceOverviewController controller = loader.getController();
 //            controller.setMainApp(mainApp);
 
         } catch (IOException e)
