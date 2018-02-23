@@ -6,9 +6,12 @@
 package attendance.automation.gui;
 
 import attendance.automation.AttendanceAutomation;
+import com.jfoenix.controls.JFXComboBox;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.BarChart;
 
 /**
  * FXML Controller class
@@ -18,6 +21,10 @@ import javafx.fxml.Initializable;
 public class ChartViewController implements Initializable
 {
     private AttendanceAutomation mainApp;
+    @FXML
+    private JFXComboBox<?> comboYourAttendance;
+    @FXML
+    private BarChart<?, ?> graphYourAttendanceOverview;
 
     public ChartViewController()
     {

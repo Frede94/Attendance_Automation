@@ -69,7 +69,7 @@
             </AnchorPane>
          </center>
          <bottom>
-            <JFXButton fx:id="btnStudSave" text="Save" BorderPane.alignment="CENTER">
+            <JFXButton fx:id="btnStudSave" onAction="#studSaveAction" text="Save" BorderPane.alignment="CENTER">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
@@ -78,6 +78,6 @@
       </BorderPane>
    </right>
    <center>
-      <JFXListView maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-border-color: grey;" BorderPane.alignment="CENTER" />
+      <JFXListView fx:id="listSubmit" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-border-color: grey;" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>

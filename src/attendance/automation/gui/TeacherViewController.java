@@ -9,19 +9,29 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
 /**
  * FXML Controller class
  *
- * @author morte
+ * @author Frederik Bærbar
  */
-public class AttendeesViewController implements Initializable
+public class TeacherViewController implements Initializable
 {
 
     @FXML
-    private TableView<?> tableAttendees;
-
+    private TableView<?> tableTeachersTeachers;
+    @FXML
+    private TableColumn<?, ?> tableTeachersClmnFirstName;
+    @FXML
+    private TableColumn<?, ?> tableTeachersClmnLastName;
+    @FXML
+    private TableColumn<?, ?> tableTeachersClmnCity;
+    @FXML
+    private TableColumn<?, ?> tableClmnCountry;
+    @FXML
+    private TableColumn<?, ?> tableTeachersClmnEmail;
 
     /**
      * Initializes the controller class.
@@ -29,7 +39,7 @@ public class AttendeesViewController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-        
+        // TODO
     }    
     
 }

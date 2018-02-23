@@ -11,14 +11,14 @@
 
 <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="561.0" prefWidth="800.0" style="-fx-background-color: lightgrey;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="attendance.automation.gui.AttendeesViewController">
    <left>
-      <JFXComboBox prefHeight="25.0" prefWidth="145.0" promptText="Courses" BorderPane.alignment="TOP_CENTER">
+      <JFXComboBox fx:id="comboClassOverviewCourses" prefHeight="25.0" prefWidth="145.0" promptText="Courses" BorderPane.alignment="TOP_CENTER">
          <BorderPane.margin>
             <Insets left="20.0" top="20.0" />
          </BorderPane.margin>
       </JFXComboBox>
    </left>
    <center>
-      <BarChart maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+      <BarChart fx:id="graphClassOverview" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
         <xAxis>
           <CategoryAxis side="BOTTOM" />
         </xAxis>

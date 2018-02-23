@@ -11,6 +11,7 @@ import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextArea;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
@@ -58,5 +59,10 @@ public class CorrectWindowController implements Initializable
     {
         // TODO
     }    
+
+    @FXML
+    private void teachSaveAction(ActionEvent event)
+    {
+    }
     
 }

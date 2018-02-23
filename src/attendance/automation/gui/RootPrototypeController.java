@@ -18,6 +18,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.control.Accordion;
 import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
@@ -59,6 +60,8 @@ public class RootPrototypeController implements Initializable
     private JFXButton btnStudentsList;
     @FXML
     private JFXButton btnTeachersList;
+    @FXML
+    private Accordion accordionRoot;
 
     /**
      * Initializes the controller class.
@@ -90,7 +93,7 @@ public class RootPrototypeController implements Initializable
             borderRoot.setCenter(chartOverview);
 
             // Give the controller access to the main app.
-            AttendeesViewController controller = loader.getController();
+            StudentViewController controller = loader.getController();
 //            controller.setMainApp(mainApp);
 
         } catch (IOException e)
@@ -211,14 +214,14 @@ public class RootPrototypeController implements Initializable
         {
             // Load person overview.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(AttendanceAutomation.class.getResource("gui/AttendeesView.fxml"));
+            loader.setLocation(AttendanceAutomation.class.getResource("gui/StudentsView.fxml"));
             AnchorPane chartOverview = (AnchorPane) loader.load();
 
             // Set person overview into the center of root layout.
             borderRoot.setCenter(chartOverview);
 
             // Give the controller access to the main app.
-//            ChartViewController controller = loader.getController();
+            StudentViewController controller = loader.getController();
 //            controller.setMainApp(mainApp);
         } catch (IOException e)
         {
@@ -229,7 +232,24 @@ public class RootPrototypeController implements Initializable
     @FXML
     private void teacherAction(ActionEvent event)
     {
+        try
+        {
+            // Load person overview.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(AttendanceAutomation.class.getResource("gui/TeacherView.fxml"));
+            AnchorPane chartOverview = (AnchorPane) loader.load();
 
+            // Set person overview into the center of root layout.
+            borderRoot.setCenter(chartOverview);
+
+            // Give the controller access to the main app.
+            TeacherViewController controller = loader.getController();
+//          controller.setMainApp(mainApp);
+
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
     }
 
     @FXML

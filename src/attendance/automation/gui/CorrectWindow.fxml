@@ -50,7 +50,7 @@
    <right>
       <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <bottom>
-            <JFXButton fx:id="btnTeachSave" text="Save" BorderPane.alignment="CENTER">
+            <JFXButton fx:id="btnTeachSave" onAction="#teachSaveAction" text="Save" BorderPane.alignment="CENTER">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
