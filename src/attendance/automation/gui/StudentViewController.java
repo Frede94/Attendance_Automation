@@ -35,7 +35,7 @@ public class StudentViewController implements Initializable
     @FXML
     private TableColumn<Students, String> tableClmnEmail;
 
-    private Model Model = new Model();
+    private Model model = new Model();
 
     /**
      * Initializes the controller class.
@@ -49,13 +49,13 @@ public class StudentViewController implements Initializable
         tableClmnCountry.setCellValueFactory(new PropertyValueFactory<>("Country"));
         tableClmnEmail.setCellValueFactory(new PropertyValueFactory<>("Email"));
         
-        tableAttendees.setItems(Model.getStudents());
-        Model.loadStudents();
+        tableAttendees.setItems(model.getStudents());
+        model.loadStudents();
     }    
     
     void loadStudent()
     {
-        Model.loadStudents();
+        model.loadStudents();
     }
     
     

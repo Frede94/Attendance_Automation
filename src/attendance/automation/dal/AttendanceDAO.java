@@ -6,6 +6,7 @@
 package attendance.automation.dal;
 
 import attendance.automation.be.Students;
+import attendance.automation.be.Teachers;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,9 +22,9 @@ import java.util.logging.Logger;
  */
 public class AttendanceDAO
 {
-     DataBaseConnector dbc = new DataBaseConnector();
-    
- 
+
+    DataBaseConnector dbc = new DataBaseConnector();
+
     public List<Students> getAllStudents()
     {
 
@@ -37,7 +38,6 @@ public class AttendanceDAO
             {
                 Students currentAttendanceStudents = new Students();
 
-                
                 currentAttendanceStudents.setFirstName(rs.getString("FirstName"));
                 currentAttendanceStudents.setLastName(rs.getString("LastName"));
                 currentAttendanceStudents.setCity(rs.getString("City"));
@@ -49,9 +49,7 @@ public class AttendanceDAO
                 currentAttendanceStudents.setITO(rs.getInt("ITO"));
                 currentAttendanceStudents.setOverall(rs.getInt("Overall"));
                 currentAttendanceStudents.setId(rs.getInt("id"));
-                
-                
-                
+
                 students.add(currentAttendanceStudents);
 
             }
@@ -60,5 +58,33 @@ public class AttendanceDAO
             Logger.getLogger(AttendanceDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return students;
+    }
+
+    public List<Teachers> getAllTeachers()
+    {
+        List<Teachers> teachers = new ArrayList();
+
+        try (Connection con = dbc.getConnection())
+        {
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM Teachers");
+            while (rs.next())
+            {
+                Teachers currentAttendanceTeachers = new Teachers();
+
+                currentAttendanceTeachers.setFirstName(rs.getString("FirstName"));
+                currentAttendanceTeachers.setLastName(rs.getString("LastName"));
+                currentAttendanceTeachers.setCity(rs.getString("City"));
+                currentAttendanceTeachers.setCountry(rs.getString("Country"));
+                currentAttendanceTeachers.setEmail(rs.getString("Email"));
+                
+                teachers.add(currentAttendanceTeachers);
+
+            }
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(AttendanceDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return teachers;
     }
 }

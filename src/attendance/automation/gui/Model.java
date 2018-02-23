@@ -6,6 +6,7 @@
 package attendance.automation.gui;
 
 import attendance.automation.be.Students;
+import attendance.automation.be.Teachers;
 import attendance.automation.bll.StudentsManager;
 import java.util.List;
 import javafx.collections.ObservableList;
@@ -17,8 +18,9 @@ import javafx.collections.FXCollections;
  */
 public class Model
 {
-    StudentsManager StudentsManager = new StudentsManager();
+    StudentsManager studentsManager = new StudentsManager();
     private static ObservableList<Students> tableAttendees = FXCollections.observableArrayList();    
+    private static ObservableList<Teachers> tableTeachersTeachers = FXCollections.observableArrayList();    
     
     
     /**
@@ -27,9 +29,14 @@ public class Model
     public Model()
     {
         this.tableAttendees = FXCollections.observableArrayList();
-        tableAttendees.addAll(StudentsManager.getAllStudents());
+        tableAttendees.addAll(studentsManager.getAllStudents());
+        
+        this.tableTeachersTeachers = FXCollections.observableArrayList();
+        tableTeachersTeachers.addAll(studentsManager.getAllTeachers());
 
         loadStudents();
+        
+        
     }
 
     /**
@@ -37,7 +44,7 @@ public class Model
      */
      void loadStudents()
     {
-        List<Students> loadedStudents = StudentsManager.getAllStudents();
+        List<Students> loadedStudents = studentsManager.getAllStudents();
 
         tableAttendees.clear();
         tableAttendees.addAll(loadedStudents);
@@ -50,5 +57,18 @@ public class Model
     public ObservableList<Students> getStudents()
     {
         return tableAttendees;
+    }
+
+    void loadTeachers()
+    {
+        List<Teachers> loadedTeachers = studentsManager.getAllTeachers();
+
+        tableTeachersTeachers.clear();
+        tableTeachersTeachers.addAll(loadedTeachers);
+    }
+
+    public ObservableList<Teachers> getTeachers()
+    {
+        return tableTeachersTeachers;
     }
 }

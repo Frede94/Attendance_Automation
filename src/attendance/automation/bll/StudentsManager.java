@@ -6,6 +6,7 @@
 package attendance.automation.bll;
 
 import attendance.automation.be.Students;
+import attendance.automation.be.Teachers;
 import attendance.automation.dal.AttendanceDAO;
 import java.util.List;
 
@@ -15,7 +16,7 @@ import java.util.List;
  */
 public class StudentsManager
 {
-     AttendanceDAO AttendanceDAO = new AttendanceDAO();
+     AttendanceDAO attendanceDAO = new AttendanceDAO();
     
     
      /**
@@ -25,6 +26,11 @@ public class StudentsManager
      */
     public List<Students> getAllStudents()
     {
-        return AttendanceDAO.getAllStudents();
+        return attendanceDAO.getAllStudents();
+    }
+
+    public List<Teachers> getAllTeachers()
+    {
+        return attendanceDAO.getAllTeachers();
     }
 }
