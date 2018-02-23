@@ -83,14 +83,14 @@ public class RootPrototypeController implements Initializable
         {
             // Load person overview.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(AttendanceAutomation.class.getResource("gui/ChartView.fxml"));
+            loader.setLocation(AttendanceAutomation.class.getResource("gui/AttendanceOverview.fxml"));
             BorderPane chartOverview = (BorderPane) loader.load();
 
             // Set person overview into the center of root layout.
             borderRoot.setCenter(chartOverview);
 
             // Give the controller access to the main app.
-            ChartViewController controller = loader.getController();
+            AttendeesViewController controller = loader.getController();
 //            controller.setMainApp(mainApp);
 
         } catch (IOException e)
@@ -106,7 +106,7 @@ public class RootPrototypeController implements Initializable
         {
             // Load person overview.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(AttendanceAutomation.class.getResource("gui/AttendanceOverview.fxml"));
+            loader.setLocation(AttendanceAutomation.class.getResource("gui/ChartView.fxml"));
             BorderPane chartOverview = (BorderPane) loader.load();
 
             // Set person overview into the center of root layout.
@@ -183,8 +183,8 @@ public class RootPrototypeController implements Initializable
                     borderRoot.setCenter(chartOverview);
 
                     // Give the controller access to the main app.
-                    ChartViewController controller = loader.getController();
-//            controller.setMainApp(mainApp);
+                    CorrectWindowController controller = loader.getController();
+//                  controller.setMainApp(mainApp);
 
                 } catch (IOException e)
                 {
@@ -246,7 +246,7 @@ public class RootPrototypeController implements Initializable
             borderRoot.setCenter(chartOverview);
 
             // Give the controller access to the main app.
-            ChartViewController controller = loader.getController();
+            SubmitController controller = loader.getController();
 //          controller.setMainApp(mainApp);
 
         } catch (IOException e)

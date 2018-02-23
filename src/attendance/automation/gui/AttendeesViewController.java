@@ -7,9 +7,7 @@ package attendance.automation.gui;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableView;
 
 /**
  * FXML Controller class
@@ -19,8 +17,6 @@ import javafx.scene.control.TableView;
 public class AttendeesViewController implements Initializable
 {
 
-    @FXML
-    private TableView<String> tableAttendees;
 
     /**
      * Initializes the controller class.
@@ -28,7 +24,7 @@ public class AttendeesViewController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-        tableAttendees.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        
     }    
     
 }

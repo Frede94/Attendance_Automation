@@ -78,6 +78,6 @@
       </BorderPane>
    </right>
    <center>
-      <JFXListView maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER" />
+      <JFXListView maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-border-color: grey;" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>
