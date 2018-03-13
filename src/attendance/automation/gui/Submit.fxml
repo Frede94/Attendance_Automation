@@ -4,7 +4,6 @@
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXListView?>
 <?import com.jfoenix.controls.JFXRadioButton?>
-<?import com.jfoenix.controls.JFXTextArea?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ToggleGroup?>
@@ -20,39 +19,15 @@
          </font>
       </Label>
    </top>
-   <left>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <JFXDatePicker fx:id="dateStud">
-               <padding>
-                  <Insets left="10.0" />
-               </padding>
-            </JFXDatePicker>
-         </children>
-      </AnchorPane>
-   </left>
    <bottom>
-      <AnchorPane prefHeight="158.0" prefWidth="600.0" BorderPane.alignment="CENTER">
-         <children>
-            <JFXTextArea fx:id="commentStud" layoutY="25.0" prefHeight="133.0" prefWidth="600.0" style="-fx-background-color: white; -fx-border-color: grey;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
-               <padding>
-                  <Insets left="20.0" right="20.0" top="20.0" />
-               </padding>
-            </JFXTextArea>
-            <Label layoutY="-1.0" text="Comment:">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
+      <AnchorPane prefHeight="0.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
    </bottom>
    <right>
       <BorderPane prefHeight="211.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <center>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <JFXRadioButton fx:id="radioStudAbsent" layoutX="13.0" layoutY="14.0" style="-jfx-selected-color: red;" text="Absent">
+                  <JFXRadioButton fx:id="radioStudPresent" layoutX="14.0" layoutY="14.0" text="Present">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -60,24 +35,60 @@
                         <ToggleGroup fx:id="submitGroup" />
                      </toggleGroup>
                   </JFXRadioButton>
-                  <JFXRadioButton fx:id="radioStudPresent" layoutX="13.0" layoutY="61.0" text="Present" toggleGroup="$submitGroup">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </JFXRadioButton>
                </children>
             </AnchorPane>
          </center>
          <bottom>
-            <JFXButton fx:id="btnStudSave" onAction="#studSaveAction" text="Save" BorderPane.alignment="CENTER">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </JFXButton>
+            <BorderPane prefHeight="33.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <left>
+                  <JFXButton fx:id="btnStudSave" onAction="#studSaveAction" text="Submit" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <BorderPane.margin>
+                        <Insets bottom="5.0" />
+                     </BorderPane.margin>
+                  </JFXButton>
+               </left>
+               <right>
+                  <JFXButton fx:id="btnStudLogout" onAction="#studLogoutAction" text="Log out" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <BorderPane.margin>
+                        <Insets bottom="5.0" />
+                     </BorderPane.margin>
+                  </JFXButton>
+               </right>
+            </BorderPane>
          </bottom>
       </BorderPane>
    </right>
    <center>
-      <JFXListView fx:id="listSubmit" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-border-color: grey;" BorderPane.alignment="CENTER" />
+      <JFXListView fx:id="listSubmit" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="294.0" prefWidth="200.0" style="-fx-border-color: grey;" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="15.0" />
+         </BorderPane.margin></JFXListView>
    </center>
+   <left>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <top>
+            <JFXDatePicker fx:id="dateStud" BorderPane.alignment="CENTER">
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </JFXDatePicker>
+         </top>
+         <bottom>
+            <JFXButton fx:id="btnStudGraph" onAction="#studGraphAction" text="View Graph" BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+               <BorderPane.margin>
+                  <Insets bottom="5.0" />
+               </BorderPane.margin>
+            </JFXButton>
+         </bottom>
+      </BorderPane>
+   </left>
 </BorderPane>

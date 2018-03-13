@@ -49,6 +49,11 @@ public class LoginWindowController implements Initializable
 
     }
 
+    /**
+     * Logs the user in based on what userlogin they user
+     * if it is a teacher, the program goes to the teacher window,
+     * or if it is a students it opens the studentview.
+     */
     @FXML
     private void pressLoginBtn()
     {
@@ -90,14 +95,20 @@ public class LoginWindowController implements Initializable
         }
 
     }
-
+    /**
+     * closes the program
+     * @param event 
+     */
     @FXML
     private void pressCancelBtn(ActionEvent event)
     {
         Stage stage = (Stage) cancelBtn.getScene().getWindow();
         stage.close();
     }
-
+    /**
+     * logs the user in, using the method pressLoginBtn.
+     * @param event 
+     */
     @FXML
     private void pressEnterLoginBtn(KeyEvent event)
     {
