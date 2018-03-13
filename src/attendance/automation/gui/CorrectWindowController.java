@@ -125,7 +125,7 @@ public class CorrectWindowController implements Initializable
         pieChart.getData().add(slice10);
         pieChart.getData().add(slice11);
 
-        pieChart.setPrefSize(400, 300);
+        pieChart.setPrefSize(700, 600);
 
         pieChart.setLegendSide(Side.LEFT);
         pieChart.setStartAngle(30);
@@ -153,7 +153,7 @@ public class CorrectWindowController implements Initializable
         AnchorPane root = new AnchorPane();
         root.getChildren().addAll(pieChart, caption);
 
-        Scene scene = new Scene(root, 400, 300);
+        Scene scene = new Scene(root, 700, 600);
 
         stage.setScene(scene);
 
