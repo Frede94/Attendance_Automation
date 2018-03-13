@@ -16,6 +16,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -49,7 +50,7 @@ public class LoginWindowController implements Initializable
     }
 
     @FXML
-    private void pressLoginBtn(ActionEvent event)
+    private void pressLoginBtn()
     {
 
         try
@@ -95,6 +96,12 @@ public class LoginWindowController implements Initializable
     {
         Stage stage = (Stage) cancelBtn.getScene().getWindow();
         stage.close();
+    }
+
+    @FXML
+    private void pressEnterLoginBtn(KeyEvent event)
+    {
+        pressLoginBtn();
     }
 
 }

@@ -13,7 +13,7 @@
       <JFXTextField fx:id="txtUsername" layoutX="61.0" layoutY="50.0" prefHeight="38.0" prefWidth="154.0" promptText="Username" />
       <JFXTextField fx:id="txtPassword" layoutX="61.0" layoutY="112.0" prefHeight="38.0" prefWidth="154.0" promptText="Password" />
       <JFXCheckBox fx:id="rememberPassword" layoutX="73.0" layoutY="170.0" text="Remember password" />
-      <JFXButton fx:id="loginBtn" buttonType="RAISED" layoutX="47.0" layoutY="224.0" onAction="#pressLoginBtn" prefHeight="38.0" prefWidth="81.0" ripplerFill="#2800ff" style="-fx-background-color: B7B7B7;" text="Login">
+      <JFXButton fx:id="loginBtn" buttonType="RAISED" layoutX="47.0" layoutY="224.0" onAction="#pressLoginBtn" onKeyPressed="#pressEnterLoginBtn" prefHeight="38.0" prefWidth="81.0" ripplerFill="#2800ff" style="-fx-background-color: B7B7B7;" text="Login">
          <opaqueInsets>
             <Insets />
          </opaqueInsets></JFXButton>
