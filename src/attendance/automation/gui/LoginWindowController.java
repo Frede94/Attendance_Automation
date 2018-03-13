@@ -27,16 +27,17 @@ import javafx.stage.Stage;
 public class LoginWindowController implements Initializable
 {
 
-    @FXML
     private JFXTextField usernameLbl;
-    @FXML
-    private JFXTextField passwordLbl;
     @FXML
     private JFXCheckBox rememberPassword;
     @FXML
     private JFXButton loginBtn;
     @FXML
     private JFXButton cancelBtn;
+    @FXML
+    private JFXTextField txtUsername;
+    @FXML
+    private JFXTextField txtPassword;
 
     /**
      * Initializes the controller class.
@@ -44,38 +45,49 @@ public class LoginWindowController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-        
-      
-        
-    }
-        
 
-    
-    
-    
+    }
+
     @FXML
     private void pressLoginBtn(ActionEvent event)
     {
-            
+
         try
         {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("RootPrototype.fxml"));
-            Parent root1 = (Parent) fxmlLoader.load();
-            RootPrototypeController ewc = fxmlLoader.getController();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root1));
-            stage.setTitle("Attendance Window");
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.show();
-            
+            if (txtUsername.getText().toLowerCase().contains("lærer"))
+            {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("CorrectWindow.fxml"));
+                Parent root1 = (Parent) fxmlLoader.load();
+                CorrectWindowController cwc = fxmlLoader.getController();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root1));
+                stage.setTitle("Attendance Window");
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.show();
+                Stage stageClose = (Stage) loginBtn.getScene().getWindow();
+                stageClose.close();
+            } else if (txtUsername.getText().toLowerCase().contains("elev"))
+            {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Submit.fxml"));
+                Parent root1 = (Parent) fxmlLoader.load();
+                SubmitController sc = fxmlLoader.getController();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root1));
+                stage.setTitle("Attendance Window");
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.show();
+                Stage stageClose = (Stage) loginBtn.getScene().getWindow();
+                stageClose.close();
+            } else if (txtUsername.getText().toLowerCase().contains(""))
+            {
+                //DO NOTHING...
+            }
+
         } catch (Exception e)
         {
             e.printStackTrace();
         }
-        Stage stageClose = (Stage) loginBtn.getScene().getWindow();
-        stageClose.close();
-      
-        
+
     }
 
     @FXML
@@ -84,5 +96,5 @@ public class LoginWindowController implements Initializable
         Stage stage = (Stage) cancelBtn.getScene().getWindow();
         stage.close();
     }
-    
+
 }
