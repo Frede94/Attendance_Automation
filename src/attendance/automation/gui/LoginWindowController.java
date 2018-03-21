@@ -8,8 +8,11 @@ package attendance.automation.gui;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXTextField;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -40,6 +43,8 @@ public class LoginWindowController implements Initializable
     @FXML
     private JFXTextField txtPassword;
 
+    private AAModel aaModel = new AAModel();
+
     /**
      * Initializes the controller class.
      */
@@ -50,9 +55,9 @@ public class LoginWindowController implements Initializable
     }
 
     /**
-     * Logs the user in based on what userlogin they user
-     * if it is a teacher, the program goes to the teacher window,
-     * or if it is a students it opens the studentview.
+     * Logs the user in based on what userlogin they user if it is a teacher,
+     * the program goes to the teacher window, or if it is a students it opens
+     * the studentview.
      */
     @FXML
     private void pressLoginBtn()
@@ -60,44 +65,43 @@ public class LoginWindowController implements Initializable
 
         try
         {
-            if (txtUsername.getText().toLowerCase().contains("lærer"))
-            {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("CorrectWindow.fxml"));
-                Parent root1 = (Parent) fxmlLoader.load();
-                CorrectWindowController cwc = fxmlLoader.getController();
-                Stage stage = new Stage();
-                stage.setScene(new Scene(root1));
-                stage.setTitle("Attendance Window");
-                stage.initModality(Modality.APPLICATION_MODAL);
-                stage.show();
-                Stage stageClose = (Stage) loginBtn.getScene().getWindow();
-                stageClose.close();
-            } else if (txtUsername.getText().toLowerCase().contains("elev"))
-            {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Submit.fxml"));
-                Parent root1 = (Parent) fxmlLoader.load();
-                SubmitController sc = fxmlLoader.getController();
-                Stage stage = new Stage();
-                stage.setScene(new Scene(root1));
-                stage.setTitle("Attendance Window");
-                stage.initModality(Modality.APPLICATION_MODAL);
-                stage.show();
-                Stage stageClose = (Stage) loginBtn.getScene().getWindow();
-                stageClose.close();
-            } else if (txtUsername.getText().toLowerCase().contains(""))
-            {
-                //DO NOTHING...
-            }
+            String password = txtPassword.getText();
+            String email = txtUsername.getText();
 
-        } catch (Exception e)
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("CorrectWindow.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            CorrectWindowController cwc = fxmlLoader.getController();
+
+            aaModel.loginCheck(password, email, cwc, root1, fxmlLoader);
+
+//            Stage stage = new Stage();
+//            stage.setScene(new Scene(root1));
+//            stage.setTitle("Attendance Window");
+//            stage.initModality(Modality.APPLICATION_MODAL);
+//            stage.show();
+//            Stage stageClose = (Stage) loginBtn.getScene().getWindow();
+//            stageClose.close();
+//            
+//            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Submit.fxml"));
+//            Parent root1 = (Parent) fxmlLoader.load();
+//            SubmitController sc = fxmlLoader.getController();
+//            Stage stage = new Stage();
+//            stage.setScene(new Scene(root1));
+//            stage.setTitle("Attendance Window");
+//            stage.initModality(Modality.APPLICATION_MODAL);
+//            stage.show();
+//            Stage stageClose = (Stage) loginBtn.getScene().getWindow();
+//            stageClose.close();
+        } catch (IOException ex)
         {
-            e.printStackTrace();
+            Logger.getLogger(LoginWindowController.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
+
     /**
      * closes the program
-     * @param event 
+     *
+     * @param event
      */
     @FXML
     private void pressCancelBtn(ActionEvent event)
@@ -105,9 +109,11 @@ public class LoginWindowController implements Initializable
         Stage stage = (Stage) cancelBtn.getScene().getWindow();
         stage.close();
     }
+
     /**
      * logs the user in, using the method pressLoginBtn.
-     * @param event 
+     *
+     * @param event
      */
     @FXML
     private void pressEnterLoginBtn(KeyEvent event)

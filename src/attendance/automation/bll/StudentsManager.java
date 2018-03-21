@@ -8,7 +8,10 @@ package attendance.automation.bll;
 import attendance.automation.be.Students;
 import attendance.automation.be.Teachers;
 import attendance.automation.dal.AttendanceDAO;
+import attendance.automation.gui.CorrectWindowController;
 import java.util.List;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 
 /**
  *
@@ -32,5 +35,15 @@ public class StudentsManager
     public List<Teachers> getAllTeachers()
     {
         return attendanceDAO.getAllTeachers();
+    }
+
+    public void login(String password, String email)
+    {
+        attendanceDAO.getAllLogins2(password, email);
+    }
+
+    public void loginCheck(String password, String email, CorrectWindowController cwc, Parent root1, FXMLLoader fxmlLoader)
+    {
+        attendanceDAO.getAllLogins(password, email, cwc, root1, fxmlLoader);
     }
 }

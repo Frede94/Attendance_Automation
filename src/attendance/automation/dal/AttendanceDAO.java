@@ -7,7 +7,9 @@ package attendance.automation.dal;
 
 import attendance.automation.be.Students;
 import attendance.automation.be.Teachers;
+import attendance.automation.gui.CorrectWindowController;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -15,6 +17,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 /**
  *
@@ -77,7 +85,7 @@ public class AttendanceDAO
                 currentAttendanceTeachers.setCity(rs.getString("City"));
                 currentAttendanceTeachers.setCountry(rs.getString("Country"));
                 currentAttendanceTeachers.setEmail(rs.getString("Email"));
-                
+
                 teachers.add(currentAttendanceTeachers);
 
             }
@@ -86,5 +94,65 @@ public class AttendanceDAO
             Logger.getLogger(AttendanceDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return teachers;
+    }
+
+    public void getAllLogins2(String password, String email)
+    {
+
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        String sql = "SELECT * FROM Login WHERE Username = ? and Password = ?";
+        try (Connection con = dbc.getConnection())
+        {
+            preparedStatement = con.prepareStatement(sql);
+            preparedStatement.setString(1, email);
+            preparedStatement.setString(2, password);
+            resultSet = preparedStatement.executeQuery();
+            if (!resultSet.next())
+            {
+                System.out.println("failed");
+            } else
+            {
+                System.out.println("login succes");
+
+            }
+
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    public void getAllLogins(String password, String email, CorrectWindowController cwc, Parent root1, FXMLLoader fxmlLoader)
+    {
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        String sql = "SELECT * FROM Login WHERE Username = ? and Password = ?";
+        try (Connection con = dbc.getConnection())
+        {
+            preparedStatement = con.prepareStatement(sql);
+            preparedStatement.setString(1, email);
+            preparedStatement.setString(2, password);
+            resultSet = preparedStatement.executeQuery();
+            if (!resultSet.next())
+            {
+                System.out.println("failed");
+            } else
+            {
+                System.out.println("login succes");
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root1));
+                stage.setTitle("Attendance Window");
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.show();
+
+            }
+
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 }
