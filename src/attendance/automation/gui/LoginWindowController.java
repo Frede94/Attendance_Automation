@@ -72,26 +72,12 @@ public class LoginWindowController implements Initializable
             Parent root1 = (Parent) fxmlLoader.load();
             CorrectWindowController cwc = fxmlLoader.getController();
 
-            aaModel.loginCheck(password, email, cwc, root1, fxmlLoader);
+            FXMLLoader fxmlLoader2 = new FXMLLoader(getClass().getResource("Submit.fxml"));
+            Parent root2 = (Parent) fxmlLoader2.load();
+            SubmitController sc = fxmlLoader2.getController();
 
-//            Stage stage = new Stage();
-//            stage.setScene(new Scene(root1));
-//            stage.setTitle("Attendance Window");
-//            stage.initModality(Modality.APPLICATION_MODAL);
-//            stage.show();
-//            Stage stageClose = (Stage) loginBtn.getScene().getWindow();
-//            stageClose.close();
-//            
-//            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Submit.fxml"));
-//            Parent root1 = (Parent) fxmlLoader.load();
-//            SubmitController sc = fxmlLoader.getController();
-//            Stage stage = new Stage();
-//            stage.setScene(new Scene(root1));
-//            stage.setTitle("Attendance Window");
-//            stage.initModality(Modality.APPLICATION_MODAL);
-//            stage.show();
-//            Stage stageClose = (Stage) loginBtn.getScene().getWindow();
-//            stageClose.close();
+            aaModel.loginCheck(password, email, cwc, root1, fxmlLoader, root2, fxmlLoader2, loginBtn);
+
         } catch (IOException ex)
         {
             Logger.getLogger(LoginWindowController.class.getName()).log(Level.SEVERE, null, ex);

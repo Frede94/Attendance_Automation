@@ -9,6 +9,7 @@ import attendance.automation.be.Students;
 import attendance.automation.be.Teachers;
 import attendance.automation.dal.AttendanceDAO;
 import attendance.automation.gui.CorrectWindowController;
+import com.jfoenix.controls.JFXButton;
 import java.util.List;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,10 +20,10 @@ import javafx.scene.Parent;
  */
 public class StudentsManager
 {
-     AttendanceDAO attendanceDAO = new AttendanceDAO();
-    
-    
-     /**
+
+    AttendanceDAO attendanceDAO = new AttendanceDAO();
+
+    /**
      * En liste af alle employees i databasen
      *
      * @return
@@ -37,13 +38,21 @@ public class StudentsManager
         return attendanceDAO.getAllTeachers();
     }
 
-    public void login(String password, String email)
+    /**
+     * Will log in a user based on what he/she types in as login information
+     * program check the database for the info, to see if it is a registert user
+     * if it is, then the program wil log in to the correct windows.
+     * @param password
+     * @param email
+     * @param cwc
+     * @param root1
+     * @param fxmlLoader
+     * @param root2
+     * @param fxmlLoader2
+     * @param loginBtn 
+     */
+    public void loginCheck(String password, String email, CorrectWindowController cwc, Parent root1, FXMLLoader fxmlLoader, Parent root2, FXMLLoader fxmlLoader2, JFXButton loginBtn)
     {
-        attendanceDAO.getAllLogins2(password, email);
-    }
-
-    public void loginCheck(String password, String email, CorrectWindowController cwc, Parent root1, FXMLLoader fxmlLoader)
-    {
-        attendanceDAO.getAllLogins(password, email, cwc, root1, fxmlLoader);
+        attendanceDAO.getAllLogins(password, email, cwc, root1, fxmlLoader, root2, fxmlLoader2, loginBtn);
     }
 }
