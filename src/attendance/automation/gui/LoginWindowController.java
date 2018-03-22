@@ -7,6 +7,7 @@ package attendance.automation.gui;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
+import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
@@ -41,7 +42,7 @@ public class LoginWindowController implements Initializable
     @FXML
     private JFXTextField txtUsername;
     @FXML
-    private JFXTextField txtPassword;
+    private JFXPasswordField txtPassword;
 
     private AAModel aaModel = new AAModel();
 
