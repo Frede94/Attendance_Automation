@@ -10,6 +10,7 @@ import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXRadioButton;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -30,6 +31,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import sun.awt.windows.WToolkit;
 
 /**
  * FXML Controller class
@@ -60,22 +62,26 @@ public class SubmitController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-        // TODO
+        dateStud.setValue(LocalDate.now());
     }
+
     /**
-     * submits the students attendance on the current day.
-     * (on the day chosen, is automaticly set to current day)
-     * @param event 
+     * submits the students attendance on the current day. (on the day chosen,
+     * is automaticly set to current day)
+     *
+     * @param event
      */
     @FXML
     private void studSaveAction(ActionEvent event)
     {
         // TODO
     }
+
     /**
      * Opens new window where a chart where the student can view his/her
      * attendance in a chart.
-     * @param event 
+     *
+     * @param event
      */
     @FXML
     private void studGraphAction(ActionEvent event)
@@ -190,11 +196,12 @@ public class SubmitController implements Initializable
 //            });
 //        }
     }
+
     /**
-     * logs the student out of the program and brings them back
-     * to the login window, where they can choose to log in again
-     * or close the program.
-     * @param event 
+     * logs the student out of the program and brings them back to the login
+     * window, where they can choose to log in again or close the program.
+     *
+     * @param event
      */
     @FXML
     private void studLogoutAction(ActionEvent event
