@@ -22,13 +22,18 @@
          <center>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <JFXRadioButton fx:id="radioStudPresent" layoutX="14.0" layoutY="14.0" text="Present">
+                  <JFXRadioButton fx:id="radioStudPresent" layoutX="14.0" layoutY="14.0" style="-jfx-selected-color: green; -jfx-unselected-color: red;" text="Present">
                      <font>
                         <Font size="20.0" />
                      </font>
                      <toggleGroup>
                         <ToggleGroup fx:id="submitGroup" />
                      </toggleGroup>
+                  </JFXRadioButton>
+                  <JFXRadioButton fx:id="radioStudAbsent" layoutX="14.0" layoutY="53.0" style="-jfx-selected-color: red; -jfx-unselected-color: green;" text="Absent" toggleGroup="$submitGroup">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
                   </JFXRadioButton>
                </children>
             </AnchorPane>

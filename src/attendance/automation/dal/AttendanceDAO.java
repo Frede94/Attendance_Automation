@@ -141,8 +141,8 @@ public class AttendanceDAO
                 stage.setTitle("Attendance Window");
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.show();
-//                Stage stageClose = (Stage) loginBtn.getScene().getWindow();
-//                stageClose.close();
+                Stage stageClose = (Stage) loginBtn.getScene().getWindow();
+                stageClose.close();
                 
 
             }
@@ -172,8 +172,8 @@ public class AttendanceDAO
                 stage.setTitle("Attendance Window");
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.show();
-//                Stage stageClose = (Stage) loginBtn.getScene().getWindow();
-//                stageClose.close();
+                Stage stageClose = (Stage) loginBtn.getScene().getWindow();
+                stageClose.close();
 
             }
 

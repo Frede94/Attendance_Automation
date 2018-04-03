@@ -55,6 +55,8 @@ public class SubmitController implements Initializable
     private JFXButton btnStudGraph;
     @FXML
     private JFXButton btnStudLogout;
+    @FXML
+    private JFXRadioButton radioStudAbsent;
 
     /**
      * Initializes the controller class.
@@ -63,6 +65,7 @@ public class SubmitController implements Initializable
     public void initialize(URL url, ResourceBundle rb)
     {
         dateStud.setValue(LocalDate.now());
+        radioStudAbsent.setSelected(true);
     }
 
     /**
