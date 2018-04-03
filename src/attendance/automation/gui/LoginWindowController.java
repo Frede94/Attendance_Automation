@@ -19,6 +19,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
@@ -43,6 +44,10 @@ public class LoginWindowController implements Initializable
     private JFXPasswordField txtPassword;
 
     private AAModel aaModel = new AAModel();
+    @FXML
+    private Label lblErrorLoginS;
+    @FXML
+    private Label lblErrorLoginT;
 
     /**
      * Initializes the controller class.
@@ -75,7 +80,7 @@ public class LoginWindowController implements Initializable
             Parent root2 = (Parent) fxmlLoader2.load();
             SubmitController sc = fxmlLoader2.getController();
 
-            aaModel.loginCheck(password, email, cwc, root1, fxmlLoader, root2, fxmlLoader2, loginBtn);
+            aaModel.loginCheck(password, email, cwc, root1, fxmlLoader, root2, fxmlLoader2, loginBtn, lblErrorLoginS, lblErrorLoginT);
 
         } catch (IOException ex)
         {

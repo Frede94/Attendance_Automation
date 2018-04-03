@@ -21,6 +21,7 @@ import java.util.logging.Logger;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -114,7 +115,7 @@ public class AttendanceDAO
      * @param fxmlLoader2
      * @param loginBtn 
      */
-    public void getAllLogins(String password, String email, CorrectWindowController cwc, Parent root1, FXMLLoader fxmlLoader, Parent root2, FXMLLoader fxmlLoader2, JFXButton loginBtn)
+    public void getAllLogins(String password, String email, CorrectWindowController cwc, Parent root1, FXMLLoader fxmlLoader, Parent root2, FXMLLoader fxmlLoader2, JFXButton loginBtn, Label lblErrorLoginS, Label lblErrorLoginT)
     {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
@@ -128,17 +129,21 @@ public class AttendanceDAO
             resultSet = preparedStatement.executeQuery();
             if (!resultSet.next())
             {
+                lblErrorLoginT.setText("Teacher login not correct!");
                 System.out.println("Teacher login failed");
             } else
             {
+                lblErrorLoginS.setText("");
+                lblErrorLoginT.setText("");
                 System.out.println("Teacher login succes");
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root1));
                 stage.setTitle("Attendance Window");
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.show();
-                Stage stageClose = (Stage) loginBtn.getScene().getWindow();
-                stageClose.close();
+//                Stage stageClose = (Stage) loginBtn.getScene().getWindow();
+//                stageClose.close();
+                
 
             }
 
@@ -155,17 +160,20 @@ public class AttendanceDAO
             resultSet = preparedStatement.executeQuery();
             if (!resultSet.next())
             {
+                lblErrorLoginS.setText("Student login not correct!");
                 System.out.println("Student login failed");
             } else
             {
+                lblErrorLoginS.setText("");
+                lblErrorLoginT.setText("");
                 System.out.println("Student login succes");
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root2));
                 stage.setTitle("Attendance Window");
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.show();
-                Stage stageClose = (Stage) loginBtn.getScene().getWindow();
-                stageClose.close();
+//                Stage stageClose = (Stage) loginBtn.getScene().getWindow();
+//                stageClose.close();
 
             }
 
