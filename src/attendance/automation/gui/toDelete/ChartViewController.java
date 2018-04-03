@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package attendance.automation.gui;
+package attendance.automation.gui.toDelete;
 
 import attendance.automation.AttendanceAutomation;
 import com.jfoenix.controls.JFXComboBox;

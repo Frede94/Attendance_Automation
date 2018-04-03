@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package attendance.automation.gui;
+package attendance.automation.gui.toDelete;
 
 import attendance.automation.be.Teachers;
+import attendance.automation.gui.Model;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -55,7 +56,7 @@ public class TeacherViewController implements Initializable
 
     public void loadTeachers()
     {
-        model.loadTeachers();
+//        model.loadTeachers();
     }
 
 }

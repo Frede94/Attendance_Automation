@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package attendance.automation.gui;
+package attendance.automation.gui.toDelete;
 
 import attendance.automation.be.Students;
+import attendance.automation.gui.Model;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -50,12 +51,12 @@ public class StudentViewController implements Initializable
         tableClmnEmail.setCellValueFactory(new PropertyValueFactory<>("Email"));
         
         tableAttendees.setItems(model.getStudents());
-        model.loadStudents();
+//        model.loadStudents();
     }    
     
     void loadStudent()
     {
-        model.loadStudents();
+//        model.loadStudents();
     }
     
     

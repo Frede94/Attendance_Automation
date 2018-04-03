@@ -3,9 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package attendance.automation.gui;
+package attendance.automation.gui.toDelete;
 
+import attendance.automation.gui.toDelete.StudentViewController;
+import attendance.automation.gui.toDelete.TeacherViewController;
 import attendance.automation.AttendanceAutomation;
+import attendance.automation.gui.CorrectWindowController;
+import attendance.automation.gui.LoginWindowController;
+import attendance.automation.gui.SubmitController;
 import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.net.URL;
