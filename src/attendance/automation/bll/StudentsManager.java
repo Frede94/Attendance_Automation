@@ -56,4 +56,9 @@ public class StudentsManager
     {
         attendanceDAO.getAllLogins(password, email, cwc, root1, fxmlLoader, root2, fxmlLoader2, loginBtn, lblErrorLoginS, lblErrorLoginT);
     }
+
+    public void setDate()
+    {
+        attendanceDAO.addAttendance();
+    }
 }

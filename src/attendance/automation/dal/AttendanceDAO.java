@@ -182,4 +182,9 @@ public class AttendanceDAO
             e.printStackTrace();
         }
     }
+
+    public void addAttendance()
+    {
+        
+    }
 }

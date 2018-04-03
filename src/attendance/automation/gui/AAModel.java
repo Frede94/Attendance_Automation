@@ -17,7 +17,6 @@ import javafx.scene.control.Label;
  */
 public class AAModel
 {
-
     private StudentsManager studentManager = new StudentsManager();
 
     /**
@@ -31,11 +30,18 @@ public class AAModel
      * @param fxmlLoader
      * @param root2
      * @param fxmlLoader2
-     * @param loginBtn 
+     * @param loginBtn
+     * @param lblErrorLoginS
+     * @param lblErrorLoginT 
      */
     void loginCheck(String password, String email, CorrectWindowController cwc, Parent root1, FXMLLoader fxmlLoader, Parent root2, FXMLLoader fxmlLoader2, JFXButton loginBtn, Label lblErrorLoginS, Label lblErrorLoginT)
     {
         studentManager.loginCheck(password, email, cwc, root1, fxmlLoader, root2, fxmlLoader2, loginBtn, lblErrorLoginS, lblErrorLoginT);
+    }
+    
+    public void setDate()
+    {
+        studentManager.setDate();
     }
 
 }
