@@ -84,8 +84,16 @@ public class CorrectWindowController implements Initializable
         clmnAllName.setCellValueFactory(new PropertyValueFactory<>("FirstName"));
         clmnAllAttendance.setCellValueFactory(new PropertyValueFactory<>("Overall"));
 
+        dateFromTo();
     }
 
+    
+     private void dateFromTo()
+            
+    {
+       dateFrom.setValue(LocalDate.of(2018, 5, 1));
+        dateTo.setValue(LocalDate.now());
+    }
     @FXML
     private void teachSaveAction(ActionEvent event)
     {
