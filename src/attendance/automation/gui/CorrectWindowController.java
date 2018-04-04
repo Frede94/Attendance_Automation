@@ -9,7 +9,6 @@ import attendance.automation.be.Students;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXRadioButton;
-import com.jfoenix.controls.JFXTextArea;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -44,8 +43,6 @@ public class CorrectWindowController implements Initializable
 {
 
     @FXML
-    private JFXDatePicker dateTeach;
-    @FXML
     private JFXButton btnTeachSave;
     @FXML
     private JFXRadioButton radioTeachAbsent;
@@ -62,15 +59,20 @@ public class CorrectWindowController implements Initializable
     @FXML
     private TableColumn<Students, String> clmnAllName;
     @FXML
-    private TableColumn<?, ?> clmnStudentCourse;
-    @FXML
     private TableColumn<?, ?> clmnStudenAttendance;
-
-    private Model model = new Model();
+    @FXML
+    private TableColumn<?, ?> clmnAttendanceDate;
     @FXML
     private JFXButton btnTeachGraph;
     @FXML
     private JFXButton btnTeachLogout;
+    @FXML
+    private JFXDatePicker dateFrom;
+    @FXML
+    private JFXDatePicker dateTo;
+
+    private Model model = new Model();
+
     /**
      * Initializes the controller class.
      */
@@ -79,17 +81,18 @@ public class CorrectWindowController implements Initializable
     {
         clmnAllName.setCellValueFactory(new PropertyValueFactory<>("FirstName"));
         clmnAllAttendance.setCellValueFactory(new PropertyValueFactory<>("Overall"));
-        
-        tableCorrectOverview.setItems(model.getStudents());
-        model.loadStudents();
-    }    
+
+// Old code delete        
+//        tableCorrectOverview.setItems(model.getStudents());
+//        model.loadStudents();
+    }
 
     @FXML
     private void teachSaveAction(ActionEvent event)
     {
         //TODO
     }
-    
+
     public void loadStudentsCorrect()
     {
         model.loadStudents();
@@ -193,5 +196,5 @@ public class CorrectWindowController implements Initializable
             // ... user chose CANCEL or closed the dialog
         }
     }
-    
+
 }
