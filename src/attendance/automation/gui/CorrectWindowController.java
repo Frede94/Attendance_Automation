@@ -91,7 +91,7 @@ public class CorrectWindowController implements Initializable
      private void dateFromTo()
             
     {
-       dateFrom.setValue(LocalDate.of(2018, 5, 1));
+       dateFrom.setValue(LocalDate.of(2018, 1, 5));
         dateTo.setValue(LocalDate.now());
     }
     @FXML
