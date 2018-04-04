@@ -44,6 +44,8 @@ public class LoginWindowController implements Initializable
     private JFXPasswordField txtPassword;
 
     private AAModel aaModel = new AAModel();
+
+    private SubmitController sCtrl = new SubmitController();
     @FXML
     private Label lblErrorLoginS;
     @FXML
@@ -82,6 +84,8 @@ public class LoginWindowController implements Initializable
 
             aaModel.loginCheck(password, email, cwc, root1, fxmlLoader, root2, fxmlLoader2, loginBtn, lblErrorLoginS, lblErrorLoginT);
 
+            
+
         } catch (IOException ex)
         {
             Logger.getLogger(LoginWindowController.class.getName()).log(Level.SEVERE, null, ex);
@@ -109,6 +113,14 @@ public class LoginWindowController implements Initializable
     private void pressEnterLoginBtn(KeyEvent event)
     {
         pressLoginBtn();
+    }
+
+    public void welcomeTxt()
+    {
+        String password = txtPassword.getText();
+        String email = txtUsername.getText();
+        
+        sCtrl.welcomeTxt(txtUsername);
     }
 
 }

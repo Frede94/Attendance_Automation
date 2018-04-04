@@ -8,6 +8,7 @@ package attendance.automation.gui;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXRadioButton;
+import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.time.LocalDate;
 
@@ -57,6 +58,8 @@ public class SubmitController implements Initializable
     private JFXButton btnStudSubmit;
 
     private static AAModel aaModel = new AAModel();
+    @FXML
+    private Label lblWelcome;
 
     /**
      * Initializes the controller class.
@@ -64,6 +67,7 @@ public class SubmitController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
+        
         dateStud.setValue(LocalDate.now());
         radioStudAbsent.setSelected(true);
     }
@@ -186,6 +190,16 @@ public class SubmitController implements Initializable
         {
             // ... user chose CANCEL or closed the dialog
         }
+    }
+
+    void welcomeTxt(JFXTextField txtUsername)
+    {
+        
+        lblWelcome.setText("Welcome: " + txtUsername.getText());
+        
+//        System.out.println(txtUsername.getText()); 
+        
+
     }
 
 }

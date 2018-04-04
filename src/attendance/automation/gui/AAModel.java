@@ -46,4 +46,6 @@ public class AAModel
         studentManager.setDate(dateStud, radioButtonPresent, radioButtonAbsent);
     }
 
+    
+
 }
