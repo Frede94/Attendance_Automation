@@ -31,7 +31,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import sun.util.calendar.BaseCalendar.Date;
 
 /**
  * FXML Controller class

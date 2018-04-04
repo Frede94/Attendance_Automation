@@ -10,6 +10,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXRadioButton;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -79,12 +80,10 @@ public class CorrectWindowController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
+
         clmnAllName.setCellValueFactory(new PropertyValueFactory<>("FirstName"));
         clmnAllAttendance.setCellValueFactory(new PropertyValueFactory<>("Overall"));
 
-// Old code delete        
-//        tableCorrectOverview.setItems(model.getStudents());
-//        model.loadStudents();
     }
 
     @FXML
