@@ -10,6 +10,7 @@ import attendance.automation.be.Teachers;
 import attendance.automation.dal.AttendanceDAO;
 import attendance.automation.gui.CorrectWindowController;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDatePicker;
 import java.util.List;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -57,8 +58,8 @@ public class StudentsManager
         attendanceDAO.getAllLogins(password, email, cwc, root1, fxmlLoader, root2, fxmlLoader2, loginBtn, lblErrorLoginS, lblErrorLoginT);
     }
 
-    public void setDate()
+    public void setDate(JFXDatePicker dateStud)
     {
-        attendanceDAO.addAttendance();
+        attendanceDAO.addAttendance(dateStud);
     }
 }

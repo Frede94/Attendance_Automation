@@ -7,6 +7,7 @@ package attendance.automation.gui;
 
 import attendance.automation.bll.StudentsManager;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDatePicker;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
@@ -39,9 +40,9 @@ public class AAModel
         studentManager.loginCheck(password, email, cwc, root1, fxmlLoader, root2, fxmlLoader2, loginBtn, lblErrorLoginS, lblErrorLoginT);
     }
     
-    public void setDate()
+    public void setDate(JFXDatePicker dateStud)
     {
-        studentManager.setDate();
+        studentManager.setDate(dateStud);
     }
 
 }

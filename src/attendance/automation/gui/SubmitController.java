@@ -7,10 +7,10 @@ package attendance.automation.gui;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
-import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXRadioButton;
 import java.net.URL;
 import java.time.LocalDate;
+
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -31,7 +31,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import sun.awt.windows.WToolkit;
+import sun.util.calendar.BaseCalendar.Date;
 
 /**
  * FXML Controller class
@@ -89,8 +89,8 @@ public class SubmitController implements Initializable
     @FXML
     private void studSubmitAction(ActionEvent event)
     {
-
-        aaModel.setDate();
+        
+        aaModel.setDate(dateStud);
         
     }
 

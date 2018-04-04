@@ -9,12 +9,16 @@ import attendance.automation.be.Students;
 import attendance.automation.be.Teachers;
 import attendance.automation.gui.CorrectWindowController;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDatePicker;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -33,9 +37,11 @@ public class AttendanceDAO
 {
 
     DataBaseConnector dbc = new DataBaseConnector();
+
     /**
      * get all student from the database
-     * @return 
+     *
+     * @return
      */
     public List<Students> getAllStudents()
     {
@@ -71,9 +77,11 @@ public class AttendanceDAO
         }
         return students;
     }
+
     /**
      * gets all teachers from the database
-     * @return 
+     *
+     * @return
      */
     public List<Teachers> getAllTeachers()
     {
@@ -102,10 +110,12 @@ public class AttendanceDAO
         }
         return teachers;
     }
+
     /**
      * Will log in a user based on what he/she types in as login information
      * program check the database for the info, to see if it is a registert user
      * if it is, then the program wil log in to the correct windows.
+     *
      * @param password
      * @param email
      * @param cwc
@@ -113,7 +123,7 @@ public class AttendanceDAO
      * @param fxmlLoader
      * @param root2
      * @param fxmlLoader2
-     * @param loginBtn 
+     * @param loginBtn
      */
     public void getAllLogins(String password, String email, CorrectWindowController cwc, Parent root1, FXMLLoader fxmlLoader, Parent root2, FXMLLoader fxmlLoader2, JFXButton loginBtn, Label lblErrorLoginS, Label lblErrorLoginT)
     {
@@ -143,7 +153,6 @@ public class AttendanceDAO
                 stage.show();
                 Stage stageClose = (Stage) loginBtn.getScene().getWindow();
                 stageClose.close();
-                
 
             }
 
@@ -183,8 +192,37 @@ public class AttendanceDAO
         }
     }
 
-    public void addAttendance()
+    public void addAttendance(JFXDatePicker dateStud)
     {
-        
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar cal = Calendar.getInstance();
+        System.out.println(dateFormat.format(cal.getTime()));
+
+        try (Connection con = dbc.getConnection())
+        {
+            PreparedStatement statement = con.prepareStatement("INSERT INTO Attendance (Date) VALUES(?)");
+            java.sql.Timestamp timestamp = new java.sql.Timestamp(cal.getTimeInMillis());
+            statement.setTimestamp(1, timestamp);
+            int insertedRecordsCount = statement.executeUpdate();
+        } catch (SQLException ex)
+        {
+            System.out.println(ex);
+        }
+
     }
 }
+
+//            PreparedStatement stmt = con.prepareStatement("INSERT INTO Attendance Date VALUES (GETDATE())");
+//
+//            stmt.executeUpdate();
+            
+            
+//            Statement statement = con.createStatement();
+//            
+//            String queryAttendance = "Insert into Attendance Set Date = GETDATE ( )";
+//            
+//            PreparedStatement st = con.prepareStatement(queryAttendance);
+//            
+//            st.execute();
+//__________________________________________________
+
