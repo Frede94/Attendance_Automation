@@ -11,6 +11,7 @@ import attendance.automation.dal.AttendanceDAO;
 import attendance.automation.gui.CorrectWindowController;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXRadioButton;
 import java.util.List;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -58,8 +59,8 @@ public class StudentsManager
         attendanceDAO.getAllLogins(password, email, cwc, root1, fxmlLoader, root2, fxmlLoader2, loginBtn, lblErrorLoginS, lblErrorLoginT);
     }
 
-    public void setDate(JFXDatePicker dateStud)
+    public void setDate(JFXDatePicker dateStud,JFXRadioButton radioButtonAbsent, JFXRadioButton radioButtonPresent)
     {
-        attendanceDAO.addAttendance(dateStud);
+        attendanceDAO.addAttendance(dateStud, radioButtonAbsent, radioButtonPresent);
     }
 }
