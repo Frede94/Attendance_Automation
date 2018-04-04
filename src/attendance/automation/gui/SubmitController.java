@@ -48,14 +48,15 @@ public class SubmitController implements Initializable
     @FXML
     private JFXRadioButton radioStudPresent;
     @FXML
+    private JFXRadioButton radioStudAbsent;
+    @FXML
     private JFXButton btnStudGraph;
     @FXML
     private JFXButton btnStudLogout;
-    @FXML
-    private JFXRadioButton radioStudAbsent;
+
     @FXML
     private JFXButton btnStudSubmit;
-    
+
     private static AAModel aaModel = new AAModel();
 
     /**
@@ -89,9 +90,8 @@ public class SubmitController implements Initializable
     @FXML
     private void studSubmitAction(ActionEvent event)
     {
-        
-        aaModel.setDate(dateStud);
-        
+
+        aaModel.setDate(dateStud, radioStudPresent, radioStudAbsent);
     }
 
     /**

@@ -10,6 +10,7 @@ import attendance.automation.be.Teachers;
 import attendance.automation.gui.CorrectWindowController;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXRadioButton;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -192,21 +193,37 @@ public class AttendanceDAO
         }
     }
 
-    public void addAttendance(JFXDatePicker dateStud)
+    public void addAttendance(JFXDatePicker dateStud, JFXRadioButton radioButtonPresent, JFXRadioButton radioButtonAbsent)
     {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Calendar cal = Calendar.getInstance();
         System.out.println(dateFormat.format(cal.getTime()));
-
-        try (Connection con = dbc.getConnection())
+        if (!radioButtonPresent.isSelected())
         {
-            PreparedStatement statement = con.prepareStatement("INSERT INTO Attendance (Date) VALUES(?)");
-            java.sql.Timestamp timestamp = new java.sql.Timestamp(cal.getTimeInMillis());
-            statement.setTimestamp(1, timestamp);
-            int insertedRecordsCount = statement.executeUpdate();
-        } catch (SQLException ex)
+            System.out.println("Present");
+            try (Connection con = dbc.getConnection())
+            {
+                PreparedStatement statement = con.prepareStatement("INSERT INTO Attendance (Date, IsPresent) VALUES(?, 1)");
+                java.sql.Timestamp timestamp = new java.sql.Timestamp(cal.getTimeInMillis());
+                statement.setTimestamp(1, timestamp);
+                int insertedRecordsCount = statement.executeUpdate();
+            } catch (SQLException ex)
+            {
+                System.out.println(ex);
+            }
+        } else if (!radioButtonAbsent.isSelected())
         {
-            System.out.println(ex);
+            System.out.println("Absent");
+            try (Connection con = dbc.getConnection())
+            {
+                PreparedStatement statement = con.prepareStatement("INSERT INTO Attendance (Date, IsPresent) VALUES(?, 0)");
+                java.sql.Timestamp timestamp = new java.sql.Timestamp(cal.getTimeInMillis());
+                statement.setTimestamp(1, timestamp);
+                int insertedRecordsCount = statement.executeUpdate();
+            } catch (SQLException ex)
+            {
+                System.out.println(ex);
+            }
         }
 
     }
@@ -215,8 +232,6 @@ public class AttendanceDAO
 //            PreparedStatement stmt = con.prepareStatement("INSERT INTO Attendance Date VALUES (GETDATE())");
 //
 //            stmt.executeUpdate();
-            
-            
 //            Statement statement = con.createStatement();
 //            
 //            String queryAttendance = "Insert into Attendance Set Date = GETDATE ( )";
