@@ -130,7 +130,7 @@ public class LoginWindowController implements Initializable
             lblErrorLoginT.setText("Teacher login not correct!");
             System.out.println("Teacher login failed");
             
-            System.out.println(ex);
+            System.out.println("Fejl!!: "+ex);
         }
     }
 

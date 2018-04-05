@@ -10,7 +10,10 @@ import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.Calendar;
 
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -67,7 +70,7 @@ public class SubmitController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-        
+
         dateStud.setValue(LocalDate.now());
         radioStudAbsent.setSelected(true);
     }
@@ -93,8 +96,26 @@ public class SubmitController implements Initializable
     @FXML
     private void studSubmitAction(ActionEvent event)
     {
+        boolean absent = radioStudAbsent.isSelected();
+        boolean present = radioStudPresent.isSelected();
+        
+        aaModel.setDate(absent, present);
+        
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar cal = Calendar.getInstance();
+        System.out.println(dateFormat.format(cal.getTime()));
+        //Lige i øjeblikket foregår dette i dal
+        //fyfy
+        if (!radioStudPresent.isSelected())
+        {
+            java.sql.Timestamp timestamp = new java.sql.Timestamp(cal.getTimeInMillis());
 
-        aaModel.setDate(dateStud, radioStudPresent, radioStudAbsent);
+        } else if (!radioStudAbsent.isSelected())
+        {
+            java.sql.Timestamp timestamp = new java.sql.Timestamp(cal.getTimeInMillis());
+        }
+
+        
     }
 
     /**
@@ -194,12 +215,10 @@ public class SubmitController implements Initializable
 
     void welcomeTxt(JFXTextField txtUsername)
     {
-        
-        lblWelcome.setText("Welcome: " + txtUsername.getText());
-        
-//        System.out.println(txtUsername.getText()); 
-        
 
+        lblWelcome.setText("Welcome: " + txtUsername.getText());
+
+//        System.out.println(txtUsername.getText()); 
     }
 
 }

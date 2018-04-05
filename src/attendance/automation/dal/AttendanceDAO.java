@@ -6,9 +6,6 @@
 package attendance.automation.dal;
 
 import attendance.automation.be.Person;
-import com.jfoenix.controls.JFXDatePicker;
-import com.jfoenix.controls.JFXRadioButton;
-import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,8 +14,6 @@ import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -34,20 +29,24 @@ public class AttendanceDAO
      * program check the database for the info, to see if it is a registert user
      * if it is, then the program wil log in to the correct windows.
      *
+     * @param password
+     * @param username
+     * @return 
+     * @throws java.lang.Exception 
      */
     public Person Login(String password, String username) throws Exception
     {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
 
-        String sql = "SELECT * FROM Login WHERE Username = ? and Password = ? and IsTeacher = 1";
+        String sql = "SELECT * FROM Login WHERE Username = ? and Password = ?";
         try (Connection con = dbc.getConnection())
         {
             preparedStatement = con.prepareStatement(sql);
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, password);
             resultSet = preparedStatement.executeQuery();
-            if (!resultSet.next())
+            if (resultSet.next())
             {
                 boolean teacher = resultSet.getBoolean("IsTeacher");
                 int personId = resultSet.getInt("PersonId");
@@ -66,29 +65,41 @@ public class AttendanceDAO
 
     }
 
-    private Person getPerson(int personId, Connection con) throws Exception
+    private Person getPerson(int personId, Connection con) 
     {
-
-        
-        
+        try
+        {
             Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * Person WHERE Id = " + personId);
+            ResultSet rs = stmt.executeQuery("SELECT * FROM Person WHERE Id =" + personId);
             rs.next();
             Person currentPerson = new Person();
             currentPerson.setId(rs.getInt("Id"));
             currentPerson.setLname(rs.getString("Lname"));
             currentPerson.setFname(rs.getString("Fname"));
+            currentPerson.setEmail(rs.getString("Email"));
+            currentPerson.setAddress(rs.getString("Address"));
+            currentPerson.setZipCode(rs.getInt("ZipCode"));
             
             return currentPerson;
-        
+        } catch (SQLException ex)
+        {
+            System.out.println(ex);
+        }
+        return null;       
     }
 
-    public void addAttendance(JFXDatePicker dateStud, JFXRadioButton radioButtonPresent, JFXRadioButton radioButtonAbsent)
+    /**
+     * Knapperne skal flyttes til Controlleren, de er kun her midlertidigt
+     * gets the current date from the system, and inserts it into the database
+     * @param absent
+     * @param present
+     */
+    public void addAttendance(boolean absent, boolean present)
     {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Calendar cal = Calendar.getInstance();
         System.out.println(dateFormat.format(cal.getTime()));
-        if (!radioButtonPresent.isSelected())
+        if (present)
         {
             System.out.println("Present");
             try (Connection con = dbc.getConnection())
@@ -101,7 +112,7 @@ public class AttendanceDAO
             {
                 System.out.println(ex);
             }
-        } else if (!radioButtonAbsent.isSelected())
+        } else if (absent)
         {
             System.out.println("Absent");
             try (Connection con = dbc.getConnection())

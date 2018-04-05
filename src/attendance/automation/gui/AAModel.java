@@ -7,8 +7,6 @@ package attendance.automation.gui;
 
 import attendance.automation.be.Person;
 import attendance.automation.bll.StudentsManager;
-import com.jfoenix.controls.JFXDatePicker;
-import com.jfoenix.controls.JFXRadioButton;
 
 /**
  *
@@ -29,9 +27,14 @@ public class AAModel
         
     }
     
-    public void setDate(JFXDatePicker dateStud, JFXRadioButton radioButtonAbsent, JFXRadioButton radioButtonPresent)
+//    public void setDate2(JFXRadioButton radioButtonAbsent, JFXRadioButton radioButtonPresent)
+//    {
+//        studentManager.setDate(radioButtonPresent, radioButtonAbsent);
+//    }
+
+    void setDate(boolean absent, boolean present)
     {
-        studentManager.setDate(dateStud, radioButtonPresent, radioButtonAbsent);
+        studentManager.setDate(absent, present);
     }
 
     

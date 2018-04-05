@@ -8,8 +8,6 @@ package attendance.automation.bll;
 
 import attendance.automation.be.Person;
 import attendance.automation.dal.AttendanceDAO;
-import com.jfoenix.controls.JFXDatePicker;
-import com.jfoenix.controls.JFXRadioButton;
 
 /**
  *
@@ -31,8 +29,13 @@ public class StudentsManager
         
     }
 
-    public void setDate(JFXDatePicker dateStud,JFXRadioButton radioButtonAbsent, JFXRadioButton radioButtonPresent)
+//    public void setDate2(JFXRadioButton radioButtonAbsent, JFXRadioButton radioButtonPresent)
+//    {
+//        attendanceDAO.addAttendance(radioButtonAbsent, radioButtonPresent);
+//    }
+
+    public void setDate(boolean absent, boolean present)
     {
-        attendanceDAO.addAttendance(dateStud, radioButtonAbsent, radioButtonPresent);
+        attendanceDAO.addAttendance(absent, present);
     }
 }
