@@ -10,10 +10,6 @@ import attendance.automation.be.Person;
 import attendance.automation.dal.AttendanceDAO;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXRadioButton;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.control.Label;
-import java.util.List;
 
 /**
  *

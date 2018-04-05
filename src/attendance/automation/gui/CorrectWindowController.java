@@ -98,10 +98,11 @@ public class CorrectWindowController implements Initializable
     {
         //TODO
     }
-    
+
     /**
      * Old mock data
-     * @param event 
+     *
+     * @param event
      */
     @FXML
     private void teachGraphAction(ActionEvent event)

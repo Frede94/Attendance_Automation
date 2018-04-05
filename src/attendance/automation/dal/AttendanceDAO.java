@@ -5,12 +5,10 @@
  */
 package attendance.automation.dal;
 
-import attendance.automation.gui.CorrectWindowController;
-import com.jfoenix.controls.JFXButton;
 import attendance.automation.be.Person;
-import attendance.automation.be.User;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXRadioButton;
+import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,9 +16,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -66,13 +62,25 @@ public class AttendanceDAO
 
             }
 
-        } 
+        }
 
     }
 
-    private Person getPerson(int personId, Connection con)
+    private Person getPerson(int personId, Connection con) throws Exception
     {
-        return null;
+
+        
+        
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * Person WHERE Id = " + personId);
+            rs.next();
+            Person currentPerson = new Person();
+            currentPerson.setId(rs.getInt("Id"));
+            currentPerson.setLname(rs.getString("Lname"));
+            currentPerson.setFname(rs.getString("Fname"));
+            
+            return currentPerson;
+        
     }
 
     public void addAttendance(JFXDatePicker dateStud, JFXRadioButton radioButtonPresent, JFXRadioButton radioButtonAbsent)
