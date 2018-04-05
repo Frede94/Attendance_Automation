@@ -5,15 +5,13 @@
  */
 package attendance.automation.gui;
 
+import attendance.automation.be.Person;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.Calendar;
 
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -64,6 +62,8 @@ public class SubmitController implements Initializable
     @FXML
     private Label lblWelcome;
 
+    private Person person;
+
     /**
      * Initializes the controller class.
      */
@@ -96,10 +96,16 @@ public class SubmitController implements Initializable
     @FXML
     private void studSubmitAction(ActionEvent event)
     {
-        boolean absent = radioStudAbsent.isSelected();
+//        boolean absent = radioStudAbsent.isSelected();
         boolean present = radioStudPresent.isSelected();
         
-        aaModel.setDate(absent, present); 
+
+        aaModel.setDate(present);
+    }
+
+    public void setPerson(Person p)
+    {
+        
     }
 
     /**

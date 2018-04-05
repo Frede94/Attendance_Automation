@@ -14,6 +14,8 @@ import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -95,14 +97,15 @@ public class AttendanceDAO
      * @param absent
      * @param present
      */
-    public void addAttendance(boolean absent, boolean present)
+    public void addAttendance(boolean present)
     {
+
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Calendar cal = Calendar.getInstance();
         System.out.println(dateFormat.format(cal.getTime()));
+
         if (present)
         {
-
             try (Connection con = dbc.getConnection())
             {
                 PreparedStatement statement = con.prepareStatement("INSERT INTO Attendance (Date, IsPresent) VALUES(?, 1)");
@@ -113,7 +116,7 @@ public class AttendanceDAO
             {
                 System.out.println(ex);
             }
-        } else if (absent)
+        } else if (!present)
         {
 
             try (Connection con = dbc.getConnection())
@@ -142,4 +145,13 @@ public class AttendanceDAO
 //            
 //            st.execute();
 //__________________________________________________
-
+//            PreparedStatement statement = null;
+//            ResultSet resultSet = null;
+//            
+//            String sql = "INSERT INTO Attendance (Date, PersonId, IsPresent) VALUES(?, ?, ?)";
+//            java.sql.Timestamp timestamp = new java.sql.Timestamp(cal.getTimeInMillis());
+//            statement.setTimestamp(1, timestamp);
+//            statement.setInteger(2, p.getId());
+//            statement.setBoolean(3, present);
+//            
+//            statement.execute();

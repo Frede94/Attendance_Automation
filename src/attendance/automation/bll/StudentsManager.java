@@ -28,8 +28,8 @@ public class StudentsManager
 
     }
 
-    public void setDate(boolean absent, boolean present)
+    public void setDate(boolean present)
     {
-        attendanceDAO.addAttendance(absent, present);
+        attendanceDAO.addAttendance(present);
     }
 }

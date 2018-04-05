@@ -28,9 +28,9 @@ public class AAModel
 
     }
 
-    void setDate(boolean absent, boolean present)
+    void setDate(boolean present)
     {
-        studentManager.setDate(absent, present);
+        studentManager.setDate(present);
     }
 
 }
