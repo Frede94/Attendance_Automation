@@ -5,6 +5,8 @@
  */
 package attendance.automation.gui;
 
+import attendance.automation.be.Person;
+import attendance.automation.be.User;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXPasswordField;
@@ -19,8 +21,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
@@ -51,6 +55,14 @@ public class LoginWindowController implements Initializable
     @FXML
     private Label lblErrorLoginT;
 
+    private Person person;
+
+    private User user;
+
+    private User username;
+
+    private User password;
+
     /**
      * Initializes the controller class.
      */
@@ -69,26 +81,56 @@ public class LoginWindowController implements Initializable
     private void pressLoginBtn()
     {
 
+//        try
+//        {
+        String password = txtPassword.getText();
+        String username = txtUsername.getText();
+
         try
         {
-            String password = txtPassword.getText();
-            String email = txtUsername.getText();
+            Person loggedInPerson = aaModel.loginCheck(password, username);
 
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("CorrectWindow.fxml"));
-            Parent root1 = (Parent) fxmlLoader.load();
-            CorrectWindowController cwc = fxmlLoader.getController();
+            if(loggedInPerson.isIsTeacher())
+            {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("CorrectWindow.fxml"));
+                Parent root1 = (Parent) fxmlLoader.load();
+                CorrectWindowController cwc = fxmlLoader.getController();
+                lblErrorLoginS.setText("");
+                lblErrorLoginT.setText("");
+                System.out.println("Teacher login succes");
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root1));
+                stage.setTitle("Attendance Window");
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.show();
+                Stage stageClose = (Stage) loginBtn.getScene().getWindow();
+                stageClose.close();
+            }else            
+            {
+                FXMLLoader fxmlLoader2 = new FXMLLoader(getClass().getResource("Submit.fxml"));
+                Parent root2 = (Parent) fxmlLoader2.load();
+                SubmitController sc = fxmlLoader2.getController();
+                lblErrorLoginS.setText("");
+                lblErrorLoginT.setText("");
+                System.out.println("Student login succes");
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root2));
+                stage.setTitle("Attendance Window");
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.show();
+                Stage stageClose = (Stage) loginBtn.getScene().getWindow();
+                stageClose.close();
+            }
+        
 
-            FXMLLoader fxmlLoader2 = new FXMLLoader(getClass().getResource("Submit.fxml"));
-            Parent root2 = (Parent) fxmlLoader2.load();
-            SubmitController sc = fxmlLoader2.getController();
-
-            aaModel.loginCheck(password, email, cwc, root1, fxmlLoader, root2, fxmlLoader2, loginBtn, lblErrorLoginS, lblErrorLoginT);
-
-            
-
-        } catch (IOException ex)
+        } catch (Exception ex)
         {
-            Logger.getLogger(LoginWindowController.class.getName()).log(Level.SEVERE, null, ex);
+            lblErrorLoginS.setText("Student login not correct!");
+            System.out.println("Student login failed");
+            lblErrorLoginT.setText("Teacher login not correct!");
+            System.out.println("Teacher login failed");
+            
+            System.out.println(ex);
         }
     }
 
@@ -119,7 +161,7 @@ public class LoginWindowController implements Initializable
     {
         String password = txtPassword.getText();
         String email = txtUsername.getText();
-        
+
         sCtrl.welcomeTxt(txtUsername);
     }
 

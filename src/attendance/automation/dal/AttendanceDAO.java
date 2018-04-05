@@ -5,10 +5,10 @@
  */
 package attendance.automation.dal;
 
+import attendance.automation.be.Person;
 import attendance.automation.be.Students;
 import attendance.automation.be.Teachers;
-import attendance.automation.gui.CorrectWindowController;
-import com.jfoenix.controls.JFXButton;
+import attendance.automation.be.User;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXRadioButton;
 import java.sql.Connection;
@@ -23,12 +23,6 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 
 /**
  *
@@ -117,16 +111,8 @@ public class AttendanceDAO
      * program check the database for the info, to see if it is a registert user
      * if it is, then the program wil log in to the correct windows.
      *
-     * @param password
-     * @param email
-     * @param cwc
-     * @param root1
-     * @param fxmlLoader
-     * @param root2
-     * @param fxmlLoader2
-     * @param loginBtn
      */
-    public void getAllLogins(String password, String email, CorrectWindowController cwc, Parent root1, FXMLLoader fxmlLoader, Parent root2, FXMLLoader fxmlLoader2, JFXButton loginBtn, Label lblErrorLoginS, Label lblErrorLoginT)
+    public Person Login(String password, String username) throws Exception
     {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
@@ -135,62 +121,31 @@ public class AttendanceDAO
         try (Connection con = dbc.getConnection())
         {
             preparedStatement = con.prepareStatement(sql);
-            preparedStatement.setString(1, email);
+            preparedStatement.setString(1, username);
             preparedStatement.setString(2, password);
             resultSet = preparedStatement.executeQuery();
             if (!resultSet.next())
             {
-                lblErrorLoginT.setText("Teacher login not correct!");
-                System.out.println("Teacher login failed");
+                boolean teacher = resultSet.getBoolean("IsTeacher");
+                int personId = resultSet.getInt("PersonId");
+
+                Person p = getPerson(personId, con);
+                p.setIsTeacher(teacher);
+                return p;
+
             } else
             {
-                lblErrorLoginS.setText("");
-                lblErrorLoginT.setText("");
-                System.out.println("Teacher login succes");
-                Stage stage = new Stage();
-                stage.setScene(new Scene(root1));
-                stage.setTitle("Attendance Window");
-                stage.initModality(Modality.APPLICATION_MODAL);
-                stage.show();
-                Stage stageClose = (Stage) loginBtn.getScene().getWindow();
-                stageClose.close();
+                throw new Exception("Login failed");
 
             }
 
-        } catch (Exception e)
-        {
-            e.printStackTrace();
-        }
-        String sqlTeacher = "SELECT * FROM Login WHERE Username = ? and Password = ? and IsTeacher = 0";
-        try (Connection conTeach = dbc.getConnection())
-        {
-            preparedStatement = conTeach.prepareStatement(sqlTeacher);
-            preparedStatement.setString(1, email);
-            preparedStatement.setString(2, password);
-            resultSet = preparedStatement.executeQuery();
-            if (!resultSet.next())
-            {
-                lblErrorLoginS.setText("Student login not correct!");
-                System.out.println("Student login failed");
-            } else
-            {
-                lblErrorLoginS.setText("");
-                lblErrorLoginT.setText("");
-                System.out.println("Student login succes");
-                Stage stage = new Stage();
-                stage.setScene(new Scene(root2));
-                stage.setTitle("Attendance Window");
-                stage.initModality(Modality.APPLICATION_MODAL);
-                stage.show();
-                Stage stageClose = (Stage) loginBtn.getScene().getWindow();
-                stageClose.close();
+        } 
 
-            }
+    }
 
-        } catch (Exception e)
-        {
-            e.printStackTrace();
-        }
+    private Person getPerson(int personId, Connection con)
+    {
+        return null;
     }
 
     public void addAttendance(JFXDatePicker dateStud, JFXRadioButton radioButtonPresent, JFXRadioButton radioButtonAbsent)

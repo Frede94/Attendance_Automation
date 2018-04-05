@@ -18,6 +18,27 @@ public class Person
     private String Email;
     private String Address;
     private int ZipCode;
+    private boolean isTeacher;
+
+    /**
+     * Get the value of isTeacher
+     *
+     * @return the value of isTeacher
+     */
+    public boolean isIsTeacher()
+    {
+        return isTeacher;
+    }
+
+    /**
+     * Set the value of isTeacher
+     *
+     * @param isTeacher new value of isTeacher
+     */
+    public void setIsTeacher(boolean isTeacher)
+    {
+        this.isTeacher = isTeacher;
+    }
 
     public int getId()
     {
