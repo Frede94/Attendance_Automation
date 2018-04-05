@@ -5,8 +5,6 @@
  */
 package attendance.automation.dal;
 
-import attendance.automation.be.Students;
-import attendance.automation.be.Teachers;
 import attendance.automation.gui.CorrectWindowController;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
@@ -38,79 +36,6 @@ public class AttendanceDAO
 {
 
     DataBaseConnector dbc = new DataBaseConnector();
-
-    /**
-     * get all student from the database
-     *
-     * @return
-     */
-    public List<Students> getAllStudents()
-    {
-
-        List<Students> students = new ArrayList();
-
-        try (Connection con = dbc.getConnection())
-        {
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM AttendanceStudents");
-            while (rs.next())
-            {
-                Students currentAttendanceStudents = new Students();
-
-                currentAttendanceStudents.setFirstName(rs.getString("FirstName"));
-                currentAttendanceStudents.setLastName(rs.getString("LastName"));
-                currentAttendanceStudents.setCity(rs.getString("City"));
-                currentAttendanceStudents.setCountry(rs.getString("Country"));
-                currentAttendanceStudents.setEmail(rs.getString("Email"));
-                currentAttendanceStudents.setDBOS(rs.getInt("DBOS"));
-                currentAttendanceStudents.setSCO(rs.getInt("SCO"));
-                currentAttendanceStudents.setSDE(rs.getInt("SDE"));
-                currentAttendanceStudents.setITO(rs.getInt("ITO"));
-                currentAttendanceStudents.setOverall(rs.getInt("Overall"));
-                currentAttendanceStudents.setId(rs.getInt("id"));
-
-                students.add(currentAttendanceStudents);
-
-            }
-        } catch (SQLException ex)
-        {
-            Logger.getLogger(AttendanceDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return students;
-    }
-
-    /**
-     * gets all teachers from the database
-     *
-     * @return
-     */
-    public List<Teachers> getAllTeachers()
-    {
-        List<Teachers> teachers = new ArrayList();
-
-        try (Connection con = dbc.getConnection())
-        {
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM Teachers");
-            while (rs.next())
-            {
-                Teachers currentAttendanceTeachers = new Teachers();
-
-                currentAttendanceTeachers.setFirstName(rs.getString("FirstName"));
-                currentAttendanceTeachers.setLastName(rs.getString("LastName"));
-                currentAttendanceTeachers.setCity(rs.getString("City"));
-                currentAttendanceTeachers.setCountry(rs.getString("Country"));
-                currentAttendanceTeachers.setEmail(rs.getString("Email"));
-
-                teachers.add(currentAttendanceTeachers);
-
-            }
-        } catch (SQLException ex)
-        {
-            Logger.getLogger(AttendanceDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return teachers;
-    }
 
     /**
      * Will log in a user based on what he/she types in as login information

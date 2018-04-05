@@ -5,7 +5,6 @@
  */
 package attendance.automation.gui;
 
-import attendance.automation.be.Students;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXRadioButton;
@@ -52,13 +51,13 @@ public class CorrectWindowController implements Initializable
     @FXML
     private JFXRadioButton radioTeachPresent;
     @FXML
-    private TableView<Students> tableCorrectOverview;
+    private TableView<?> tableCorrectOverview;
     @FXML
-    private TableView<Students> tableCorrectCourse;
+    private TableView<?> tableCorrectCourse;
     @FXML
-    private TableColumn<Students, String> clmnAllAttendance;
+    private TableColumn<?, String> clmnAllAttendance;
     @FXML
-    private TableColumn<Students, String> clmnAllName;
+    private TableColumn<?, String> clmnAllName;
     @FXML
     private TableColumn<?, ?> clmnStudenAttendance;
     @FXML
@@ -87,24 +86,23 @@ public class CorrectWindowController implements Initializable
         dateFromTo();
     }
 
-    
-     private void dateFromTo()
-            
+    private void dateFromTo()
+
     {
-       dateFrom.setValue(LocalDate.of(2018, 1, 5));
+        dateFrom.setValue(LocalDate.of(2018, 1, 5));
         dateTo.setValue(LocalDate.now());
     }
+
     @FXML
     private void teachSaveAction(ActionEvent event)
     {
         //TODO
     }
-
-    public void loadStudentsCorrect()
-    {
-        model.loadStudents();
-    }
-
+    
+    /**
+     * Old mock data
+     * @param event 
+     */
     @FXML
     private void teachGraphAction(ActionEvent event)
     {

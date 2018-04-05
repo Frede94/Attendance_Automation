@@ -5,14 +5,11 @@
  */
 package attendance.automation.bll;
 
-import attendance.automation.be.Students;
-import attendance.automation.be.Teachers;
 import attendance.automation.dal.AttendanceDAO;
 import attendance.automation.gui.CorrectWindowController;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXRadioButton;
-import java.util.List;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
@@ -25,21 +22,6 @@ public class StudentsManager
 {
 
     AttendanceDAO attendanceDAO = new AttendanceDAO();
-
-    /**
-     * En liste af alle employees i databasen
-     *
-     * @return
-     */
-    public List<Students> getAllStudents()
-    {
-        return attendanceDAO.getAllStudents();
-    }
-
-    public List<Teachers> getAllTeachers()
-    {
-        return attendanceDAO.getAllTeachers();
-    }
 
     /**
      * Will log in a user based on what he/she types in as login information
