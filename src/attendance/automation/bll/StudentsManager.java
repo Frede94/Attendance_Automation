@@ -5,7 +5,6 @@
  */
 package attendance.automation.bll;
 
-
 import attendance.automation.be.Person;
 import attendance.automation.dal.AttendanceDAO;
 
@@ -23,16 +22,11 @@ public class StudentsManager
      * program check the database for the info, to see if it is a registert user
      * if it is, then the program wil log in to the correct windows.
      */
-    public Person loginCheck(String password,String username)throws Exception
+    public Person loginCheck(String password, String username) throws Exception
     {
         return attendanceDAO.Login(password, username);
-        
-    }
 
-//    public void setDate2(JFXRadioButton radioButtonAbsent, JFXRadioButton radioButtonPresent)
-//    {
-//        attendanceDAO.addAttendance(radioButtonAbsent, radioButtonPresent);
-//    }
+    }
 
     public void setDate(boolean absent, boolean present)
     {

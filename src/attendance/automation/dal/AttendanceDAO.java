@@ -31,8 +31,8 @@ public class AttendanceDAO
      *
      * @param password
      * @param username
-     * @return 
-     * @throws java.lang.Exception 
+     * @return
+     * @throws java.lang.Exception
      */
     public Person Login(String password, String username) throws Exception
     {
@@ -65,7 +65,7 @@ public class AttendanceDAO
 
     }
 
-    private Person getPerson(int personId, Connection con) 
+    private Person getPerson(int personId, Connection con)
     {
         try
         {
@@ -79,18 +79,19 @@ public class AttendanceDAO
             currentPerson.setEmail(rs.getString("Email"));
             currentPerson.setAddress(rs.getString("Address"));
             currentPerson.setZipCode(rs.getInt("ZipCode"));
-            
+
             return currentPerson;
         } catch (SQLException ex)
         {
             System.out.println(ex);
         }
-        return null;       
+        return null;
     }
 
     /**
-     * Knapperne skal flyttes til Controlleren, de er kun her midlertidigt
-     * gets the current date from the system, and inserts it into the database
+     * Knapperne skal flyttes til Controlleren, de er kun her midlertidigt gets
+     * the current date from the system, and inserts it into the database
+     *
      * @param absent
      * @param present
      */
@@ -101,7 +102,7 @@ public class AttendanceDAO
         System.out.println(dateFormat.format(cal.getTime()));
         if (present)
         {
-            System.out.println("Present");
+
             try (Connection con = dbc.getConnection())
             {
                 PreparedStatement statement = con.prepareStatement("INSERT INTO Attendance (Date, IsPresent) VALUES(?, 1)");
@@ -114,7 +115,7 @@ public class AttendanceDAO
             }
         } else if (absent)
         {
-            System.out.println("Absent");
+
             try (Connection con = dbc.getConnection())
             {
                 PreparedStatement statement = con.prepareStatement("INSERT INTO Attendance (Date, IsPresent) VALUES(?, 0)");

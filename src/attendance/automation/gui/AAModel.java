@@ -14,6 +14,7 @@ import attendance.automation.bll.StudentsManager;
  */
 public class AAModel
 {
+
     private StudentsManager studentManager = new StudentsManager();
 
     /**
@@ -21,22 +22,15 @@ public class AAModel
      * program check the database for the info, to see if it is a registert user
      * if it is, then the program wil log in to the correct windows.
      */
-    Person loginCheck(String password, String username)throws Exception
+    Person loginCheck(String password, String username) throws Exception
     {
         return studentManager.loginCheck(password, username);
-        
+
     }
-    
-//    public void setDate2(JFXRadioButton radioButtonAbsent, JFXRadioButton radioButtonPresent)
-//    {
-//        studentManager.setDate(radioButtonPresent, radioButtonAbsent);
-//    }
 
     void setDate(boolean absent, boolean present)
     {
         studentManager.setDate(absent, present);
     }
-
-    
 
 }

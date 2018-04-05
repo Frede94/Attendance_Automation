@@ -99,23 +99,7 @@ public class SubmitController implements Initializable
         boolean absent = radioStudAbsent.isSelected();
         boolean present = radioStudPresent.isSelected();
         
-        aaModel.setDate(absent, present);
-        
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Calendar cal = Calendar.getInstance();
-        System.out.println(dateFormat.format(cal.getTime()));
-        //Lige i øjeblikket foregår dette i dal
-        //fyfy
-        if (!radioStudPresent.isSelected())
-        {
-            java.sql.Timestamp timestamp = new java.sql.Timestamp(cal.getTimeInMillis());
-
-        } else if (!radioStudAbsent.isSelected())
-        {
-            java.sql.Timestamp timestamp = new java.sql.Timestamp(cal.getTimeInMillis());
-        }
-
-        
+        aaModel.setDate(absent, present); 
     }
 
     /**
